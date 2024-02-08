@@ -1,0 +1,9 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.LoadingPage {
+  @include flex-column-center-center;
+  height: 100%;
+  width: 100%;
+  background-color: $color-slate-900;
+}

@@ -1,0 +1,17 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.page-wrapper {
+  @include flex-column-start-center;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+
+  &[data-theme="light"] {
+    background-color: $color-white;
+  }
+
+  &[data-theme="dark"] {
+    background-color: $color-neutral-800;
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "pt": {
+      "requestError": "Erro: O servidor não soube lidar com a requisição.",
+      "requestWithoutResponseError": "Erro: O servidor não pode responder a essa requisição.",
+      "loading": "carregando..."
+    },
+    "en": {
+      "requestError": "Error: The server couldn't handle the request.",
+      "requestWithoutResponseError": "Error: The server couldn't response this request.",
+      "loading": "loading..."
+    }
+  }

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="André Luiz" />
+    <meta name="description" content="Have a great experience with our chat platform" />
+    <meta name="HandheldFriendly" content="true" />
+
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <title>BestChat</title>
+
+    <style>
+      body {
+        margin: 0;
+        background-color: #242424;
+      }
+
+      .loader-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .loader-container>span {
+        margin-bottom: 50px;
+        color: #ffffff;
+        font-size: 24px;
+        font-family: Helvetica, sans-serif;
+        text-align: center;
+      }
+
+      .loader {
+        display: inline-block;
+        position: relative;
+      }
+
+      .loader .ball {
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        margin: 0 1px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        animation: spinner-ball 1100ms ease-in-out infinite;
+      }
+
+      .loader .ball:nth-child(1) {
+        animation-delay: calc(1100ms / 6 * -1);
+      }
+
+      .loader .ball:nth-child(2) {
+        animation-delay: calc(1100ms / 6 * -2);
+      }
+
+      .loader .ball:nth-child(3) {
+        animation-delay: calc(1100ms / 6 * -3);
+      }
+
+      @keyframes spinner-ball {
+
+        0%,
+        100% {
+          transform: translateY(40%);
+        }
+
+        50% {
+          transform: translateY(-40%);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root">
+      <div class="loader-container">
+        <span>A aplicação está ficando pronta pra você</span>
+        <div class="loader">
+          <span class="ball"></span>
+          <span class="ball"></span>
+          <span class="ball"></span>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.home-page {
+  @include flex-column-center-center;
+  flex: 1;
+  width: 100%;
+}
