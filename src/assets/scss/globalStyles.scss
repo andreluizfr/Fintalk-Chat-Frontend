@@ -1,7 +1,26 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-family: "Aeonik",ui-monospace,Menlo,Monaco,"Cascadia Mono","Segoe UI Mono","Roboto Mono","Oxygen Mono","Ubuntu Monospace","Source Code Pro","Fira Mono","Droid Sans Mono","Courier New",monospace;
 
+@font-face {
+  font-display: fallback;
+  font-family: Aeonik;
+  font-weight: 300;
+  src: url(../font/AeonikTRIAL-Light.otf) format("opentype");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: Aeonik;
+  font-weight: 400;
+  src: url(../font/AeonikTRIAL-Regular.otf) format("opentype");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: Aeonik;
+  font-weight: 600;
+  src: url(../font/AeonikTRIAL-Bold.otf) format("opentype");
+}
+
+:root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -18,8 +37,5 @@
   outline: 0;
   border: 0;
   box-sizing: border-box;
-}
-
-body {
-  margin: 0;
+  font-family: Aeonik;
 }
