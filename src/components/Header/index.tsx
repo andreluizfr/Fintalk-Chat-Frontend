@@ -1,9 +1,9 @@
 import './styles.scss';
+import ThemeSwitcher from './ThemeSwitcher';
 import logo from '@assets/img/logo.png';
 
 import { StoreState } from '@store/redux/config';
 import { useSelector } from 'react-redux';
-import ThemeSwitcher from './ThemeSwitcher';
 
 export default function Header() {
 
@@ -20,9 +20,11 @@ export default function Header() {
       />
 
       <div className='buttons-bar-wrapper'>
-        <button className='login-button' data-theme={themeStore.selectedTheme}>
-          {languageStore.labels.login}
-        </button>
+        <a href="/login">
+          <button className='login-button' data-theme={themeStore.selectedTheme}>
+            {languageStore.labels.login}
+          </button>
+        </a>
 
         <button className='signup-button' data-theme={themeStore.selectedTheme}>
           {languageStore.labels.signup}

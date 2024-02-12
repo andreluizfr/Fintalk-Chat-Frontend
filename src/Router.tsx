@@ -5,6 +5,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import LoadingPage from "@pages/Loading";
 const NotFoundPage = lazy(() => import('@pages/NotFound'));
 const HomePage = lazy(() => import('@pages/Home'));
+const LoginPage = lazy(() => import('@pages/Login'));
 
 function Router() {
 
@@ -18,6 +19,10 @@ function Router() {
             {
               path: "/",
               element: <HomePage />,
+            },
+            {
+              path: "/login",
+              element: <LoginPage />,
             },
             {
               path: "*",

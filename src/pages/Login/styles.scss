@@ -1,0 +1,9 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.login-page {
+  @include flex-column-center-center;
+  flex: 1;
+  width: 100%;
+  padding: 1rem;
+}

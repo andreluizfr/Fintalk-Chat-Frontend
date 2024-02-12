@@ -26,7 +26,7 @@
     @include flex-row-center-center;
     gap: 1rem;
 
-    > button {
+    button {
       padding: 1rem;
       border-radius: .4rem;
 
@@ -44,7 +44,7 @@
       }
     }
 
-    > .login-button {
+    .login-button {
       background-color: $color-neutral-700;
       &:hover {
         background-color: $color-slate-500;
@@ -62,7 +62,7 @@
       }
     }
 
-    > .signup-button {
+    .signup-button {
       background-color: $color-pink;
       &:hover {
         background-color: $color-dark-pink;
