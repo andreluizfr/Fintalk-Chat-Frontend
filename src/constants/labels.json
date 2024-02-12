@@ -1,10 +1,39 @@
 {
     "pt": {
-      "signup": "Cadastrar-se",
-      "login": "Logar"
+      "signup": "Juntar-se",
+      "login": "Entrar",
+      "footerAddress": "Rua Butantã 194, 2 Andar Pinheiros",
+      "footerCityStateCountry": "São Paulo, SP BRASIL",
+      "footerPhoneNumber": "+55 11 4450 1384",
+      "company": "Empresa",
+      "aboutFintalk": "Sobre a Fintalk",
+      "workWithUs": "Trabalhe Conosco",
+      "clients": "Clientes",
+      "funcionalities": "Funcionalidades",
+      "press": "Imprensa",
+      "prices": "Preços",
+      "support": "Suporte",
+      "Documentation": "Documentação",
+      "apiReference": "API Reference",
+      "help": "Ajuda"
+      
     },
     "en": {
       "signup": "Sign-up",
-      "login": "Log-in"
+      "login": "Log-in",
+      "footerAddress": "Rua Butantã 194, 2 Andar Pinheiros",
+      "footerCityStateCountry": "São Paulo, SP BRASIL",
+      "footerPhoneNumber": "+55 11 4450 1384",
+      "company": "Company",
+      "aboutFintalk": "About the Fintalk",
+      "workWithUs": "Work with Us",
+      "clients": "Clients",
+      "funcionalities": "Funcionalities",
+      "press": "Press",
+      "prices": "Prices",
+      "support": "Support",
+      "documentation": "Documentation",
+      "apiReference": "API Reference",
+      "help": "Ajuda"
     }
   }
