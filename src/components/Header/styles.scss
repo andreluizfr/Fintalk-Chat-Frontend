@@ -8,6 +8,13 @@
   width: 100%;
   padding: 1rem;
 
+  &[data-theme="light"] {
+    border-bottom: 1px solid rgba($color-black, 0.24);
+  }
+  &[data-theme="dark"] {
+    border-bottom: 1px solid rgba($color-white, 0.24);
+  }
+
   > .logo-img {
     width: 8rem;
     height: auto;

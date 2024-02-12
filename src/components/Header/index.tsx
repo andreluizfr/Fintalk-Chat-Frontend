@@ -11,7 +11,7 @@ export default function Header() {
   const themeStore = useSelector((state: StoreState) => state.theme);
 
   return (
-    <header className='page-header'>
+    <header className='page-header' data-theme={themeStore.selectedTheme}>
       <img 
         className='logo-img'
         loading='lazy'
