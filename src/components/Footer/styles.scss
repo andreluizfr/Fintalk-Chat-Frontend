@@ -2,5 +2,75 @@
 @import '../../assets/scss/mixins';
 
 .page-footer {
-    
+  width: 100%;
+  padding: 2rem 4rem;
+  background-color: $color-neutral-700;
+
+  @include mq-medium {
+    padding: 3rem 6rem;
+  }
+  @include mq-large {
+    padding: 5rem 10rem;
+  }
+  @include mq-extra-large {
+    padding: 8rem 16rem;
+  }
+
+  .footer-container {
+    @include flex-row-start-start;
+    flex-wrap: wrap;
+    width: 100%;
+
+    > .section-column {
+      flex: 1;
+      @include flex-column-center-start;
+      padding: .4rem;
+
+      @include mq-medium{
+        @include flex-column-center-center;
+      }
+
+      > .section-wrapper {
+        @include flex-column-center-start;
+        gap: .5rem;
+
+        > .logo {
+          width: 6rem;
+          height: auto;
+        }
+
+        > .info {
+          width: fit-content;
+
+          color: $color-white;
+          font-size: $font-size-small;
+          font-weight: $font-weight-normal;
+        }
+
+        > .section-title {
+          width: fit-content;
+
+          color: $color-white;
+          font-size: $font-size-normal;
+          font-weight: $font-weight-bold;
+          white-space: nowrap;
+        }
+
+        > .link {
+          width: fit-content;
+
+          color: $color-white;
+          font-size: $font-size-small;
+          font-weight: $font-weight-normal;
+          white-space: nowrap;
+
+          cursor: pointer;
+        }
+      }
+    }
+
+    > .section-column:nth-child(1) {
+      min-width: 10rem;
+    }
+  }
 }
