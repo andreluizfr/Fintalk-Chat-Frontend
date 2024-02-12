@@ -10,6 +10,12 @@ export default function HomePage(): JSX.Element {
 
   return (
     <main className='home-page'>
+      <h1 className='welcome-text' data-theme={themeStore.selectedTheme}>
+        {languageStore.messages.welcome}
+      </h1>
+      <h2 className='welcome-subtitle-text' data-theme={themeStore.selectedTheme}>
+        {languageStore.messages.welcomeSubtitle}
+      </h2>
     </main>
   );
 }

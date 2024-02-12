@@ -2,7 +2,32 @@
 @import '../../assets/scss/mixins';
 
 .home-page {
-  @include flex-column-center-center;
+  @include flex-column-start-start;
   flex: 1;
   width: 100%;
+  padding: 1rem;
+
+  & > .welcome-text {
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+
+    &[data-theme="light"] {
+      color: $color-neutral-900;
+    }
+    &[data-theme="dark"] {
+      color: $color-white;
+    }
+  }
+
+  & > .welcome-subtitle-text {
+      font-size: $font-size-medium;
+      font-weight: $font-weight-semi-bold;
+
+      &[data-theme="light"] {
+        color: $color-neutral-900;
+      }
+      &[data-theme="dark"] {
+        color: $color-white;
+      }
+  }
 }
