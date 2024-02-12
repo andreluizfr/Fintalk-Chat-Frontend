@@ -1,6 +1,5 @@
 import './styles.scss';
 import { PiSmileySadLight } from "react-icons/pi";
-import { lazy } from 'react';
 
 function NotFoundPage(): JSX.Element {
 
@@ -19,15 +18,5 @@ function NotFoundPage(): JSX.Element {
   );
 }
 
-const waitSomeTime = () => {
-  return new Promise<void>(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, 1000);
-  });
-};
-
-const NotFoundPageCointainer = lazy(() => waitSomeTime().then(() => ({ default: () => <NotFoundPage /> })));
-
-export default NotFoundPageCointainer;
+export default NotFoundPage;
 

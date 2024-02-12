@@ -1,10 +1,10 @@
-import { Suspense, useState } from 'react';
+import { Suspense, lazy, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ErrorBoundary } from 'react-error-boundary';
 
 import LoadingPage from "@pages/Loading";
-import NotFoundPage from '@pages/NotFound';
-import HomePage from '@pages/Home';
+const NotFoundPage = lazy(() => import('@pages/NotFound'));
+const HomePage = lazy(() => import('@pages/Home'));
 
 function Router() {
 
