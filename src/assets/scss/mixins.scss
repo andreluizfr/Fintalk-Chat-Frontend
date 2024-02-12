@@ -135,12 +135,6 @@
     align-items: flex-start;
 }
 
-@mixin mq-extra-small{
-    @media only screen and (max-width: 576px) {
-        @content;
-    }
-}
-
 @mixin mq-small{
     @media only screen and (min-width: 576px) {
         @content;
