@@ -2,63 +2,42 @@ import { IHttpClient } from '@entities/httpClient/IHttpClient';
 import { IHttpResponse } from '@entities/httpClient/IHttpResponse';
 import { IHttpError } from '@entities/httpClient/IHttpError';
 
-import { AxiosError, AxiosInstance } from 'axios';
 import { HttpStatusCode } from '../HttpStatusCode';
 import User from '@entities/User';
 
 export class AxiosHttpClientImpl<T> implements IHttpClient<T> {
 
-  axiosInstance;
-
-  constructor(instance: AxiosInstance) {
-    this.axiosInstance = instance;
-  }
-
   public async get(path: string, header?: any) {
 
-    try {
-      switch(path) {
-        case '/fetchUser': {
-          return await this.mockFetchUser(header);
-        }
-
-        default: {
-          throw this.generateHttpError("Route doesn't exist.", HttpStatusCode.Not_Found);
-        }
+    switch(path) {
+      case '/fetchUser': {
+        return await this.mockFetchUser(header);
       }
-
-    } catch (err: unknown) {
-      const error = err as Error;
-      throw this.generateHttpError(error.message, HttpStatusCode.Bad_Gateway);
+      default: {
+        throw {
+          httpStatusCode: HttpStatusCode.Not_Found,
+          message: "Route doesn't exist."
+        } satisfies IHttpError;
+      }
     }
   }
 
-  public async post(path: string, body: object, header?: any) {
+  public async post(path: string, body: object, _header?: any) {
 
-    try {
-      switch(path) {
-        case '/createUser': {
-          return await this.mockCreateUser(body as User);
-        }
-        case '/login': {
-          return await this.mockLogin(body);
-        }
-        default: {
-          throw this.generateHttpError("Route doesn't exist.", HttpStatusCode.Not_Found);
-        }
+    switch(path) {
+      case '/createUser': {
+        return await this.mockCreateUser(body as User);
       }
-
-    } catch (err: unknown) {
-      const error = err as Error;
-      throw this.generateHttpError(error.message, HttpStatusCode.Bad_Gateway);
+      case '/login': {
+        return await this.mockLogin(body);
+      }
+      default: {
+        throw {
+          httpStatusCode: HttpStatusCode.Not_Found,
+          message: "Route doesn't exist."
+        } satisfies IHttpError;
+      }
     }
-  }
-
-  private generateHttpError(message: string, httpStatusCode: HttpStatusCode): IHttpError {
-    return {
-      httpStatusCode: httpStatusCode,
-      message: message
-    };
   }
 
   private mockCreateUser(user: User): Promise<IHttpResponse<T>> {
@@ -106,7 +85,10 @@ export class AxiosHttpClientImpl<T> implements IHttpClient<T> {
           } satisfies IHttpResponse<T>);
         }
         
-        reject(Error('token is missing'));
+        reject({
+          httpStatusCode: HttpStatusCode.Bad_Request,
+          message: "token is missing"
+        } satisfies IHttpError);
       }, 1000);
     });
   }

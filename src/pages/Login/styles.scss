@@ -5,5 +5,131 @@
   @include flex-column-center-center;
   flex: 1;
   width: 100%;
-  padding: 1rem;
+
+  @include mq-small{
+    padding: 4rem;
+  }
+
+  > .Login-form{
+    width: 100%;
+    @include flex-column-start-start;
+    gap: 1rem;
+    padding: 4rem 2rem;
+    background-color: $color-neutral-700;
+
+    @include mq-small{
+      width: 27rem;
+    }
+
+    & > .Title{
+        margin: 0 0 .5rem 0;
+        font-size: $font-size-xl;
+        color: $color-white;
+        font-weight: $font-weight-bold;
+    }
+
+    .Login-button{
+        width: 100%;
+        height: 3rem;
+        border-radius: .25rem;
+        background-color: $color-pink;
+
+        color: $color-white;
+        font-size: $font-size-normal;
+        font-weight: $font-weight-bold;
+
+        cursor: pointer;
+    }
+
+    .Remember-me-and-need-help-container{
+        width: 100%;
+        @include flex-row-space-between-center;
+
+        .Remember-me-checkbox{
+            @include flex-row-center-center;
+
+            label{
+                input{
+                    position: relative;
+                    inset: 0;
+                    zoom: 1.2;
+                }
+                input::before{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    inset: 0;
+                    width: .75rem;
+                    height: .75rem;
+                    border-radius: .125rem;
+                    background-color: $color-white;
+                }
+                input::after{
+                    content: "";
+                    display: none;
+                    position: absolute;
+                    inset: 0;
+                    width: .75rem;
+                    height: .75rem;
+                    background-image: url("../../assets/img/check.svg");
+                    background-position: center;
+                    background-size: 80%;
+                    background-repeat: no-repeat;
+                }
+            }
+
+            label input:focus::before{
+                background-color: $color-neutral-100;
+            }
+
+            label input:checked::after{
+                display: block;
+            }
+
+            span{
+                margin-left: .125rem;
+                color: $color-neutral-500;
+                font-size: $font-size-small;
+            }
+        }
+
+        .Need-help{
+            color: $color-neutral-500;
+            font-size: $font-size-small;
+            cursor: pointer;
+        }
+    }
+
+    .Aditional-infos-container{
+        color: $color-neutral-500;
+
+        .New-members{
+            margin: .5rem 0 .5rem 0;
+            font-size: $font-size-normal;
+
+            strong{
+                color: $color-white;
+            }
+        }
+        .Recaptcha-notice{
+            margin: .5rem 0 0 0;
+            font-size: $font-size-small;
+            line-height: .94rem;
+
+            a{
+                color: $color-blue;
+                text-decoration: none;
+
+                &:visited{
+                    color: $color-blue;
+                    text-decoration: none;
+                }
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+  }
+
 }

@@ -4,13 +4,31 @@
       "requestWithoutResponseError": "Erro: O servidor não pode responder a essa requisição.",
       "loading": "carregando...",
       "welcome": "Bem-vindo(a) ao Fintalk Chat!",
-      "welcomeSubtitle": "Desfrute de um bate-papo aleatório na nossa plataforma"
+      "welcomeSubtitle": "Desfrute de um bate-papo aleatório na nossa plataforma",
+      "rememberMe": "Lembre-se de mim",
+      "needHelp": "Precisa de ajuda?",
+      "newHere": "Novo por aqui?",
+      "signupNow": "Assine agora",
+      "reCaptcha": "Esta página é protegida pelo Google reCAPTCHA para garantir que você não é um robô.",
+      "learMore": "Saiba mais.",
+      "enterValidEmail": "Informe um email válido.",
+      "enterValidPassword": "A senha deve ter entre 4 e 60 caracteres.",
+      "emailOrPasswordNull": "Email ou senha não foram identificados."
     },
     "en": {
       "requestError": "Error: The server couldn't handle the request.",
       "requestWithoutResponseError": "Error: The server couldn't response this request.",
       "loading": "loading...",
       "welcome": "Bem-vindo(a) ao Fintalk Chat!",
-      "welcomeSubtitle": "Desfrute de um bate-papo aleatório na nossa plataforma"
+      "welcomeSubtitle": "Desfrute de um bate-papo aleatório na nossa plataforma",
+      "rememberMe": "Remember me",
+      "needHelp": "Need help?",
+      "newHere": "New here?",
+      "signupNow": "Sign up now",
+      "reCaptcha": "This page is protected by Google reCAPTCHA to ensure you are not a robot.",
+      "learMore": "Learn more.",
+      "enterValidEmail": "Enter a valid email.",
+      "enterValidPassword": "The password must have between 4 and 60 caracters.",
+      "emailOrPasswordNull": "Email or password were not identified."
     }
   }

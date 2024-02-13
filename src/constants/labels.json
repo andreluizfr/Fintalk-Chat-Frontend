@@ -15,8 +15,14 @@
       "support": "Suporte",
       "Documentation": "Documentação",
       "apiReference": "API Reference",
-      "help": "Ajuda"
-      
+      "help": "Ajuda",
+      "show": "MOSTRAR",
+      "hide": "OCULTAR",
+      "rememberMe": "Lembre-se de mim",
+      "needHelp": "Precisa de ajuda?",
+      "newMember": "Novo por aqui?",
+      "email": "Email",
+      "password": "Senha"
     },
     "en": {
       "signup": "Sign-up",
@@ -34,6 +40,10 @@
       "support": "Support",
       "documentation": "Documentation",
       "apiReference": "API Reference",
-      "help": "Ajuda"
+      "help": "Ajuda",
+      "show": "SHOW",
+      "hide": "HIDE",
+      "email": "Email",
+      "password": "Password"
     }
   }

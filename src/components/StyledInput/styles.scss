@@ -1,0 +1,103 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.Styled-input {
+  @include flex-column-center-start;
+  position: relative;
+  margin-bottom: 4px;
+  width: 100%;
+
+  .Input {
+    width: 100%;
+    height: 50px;
+    padding: 24px 16px 4px 16px;
+    border-radius: 3px;
+    background-color: $color-slate-900;
+    border: 1px solid rgba($color-slate-900, 0.6);
+
+    font-size: 16px;
+    color: $color-slate-100;
+  }
+
+  .Title {
+    position: absolute;
+    left: 20px;
+    top: 14px;
+
+    font-size: 16px;
+    font-weight: 400;
+    color: $color-slate-100;
+
+    pointer-events: none;
+    transition: .2s;
+  }
+
+  .Warning {
+    display: none;
+    margin-top: 5px;
+    font-size: 12.8px;
+    color: $color-orange;
+  }
+
+  .Show {
+    position: absolute;
+    top: 16px; //altura do input é 3rem fixos
+    right: 16px;
+    color: $color-slate-100;
+
+    z-index: 9999;
+    cursor: pointer;
+  }
+
+
+
+
+
+  .Input:focus {
+    backdrop-filter: opacity(0.3);
+  }
+
+  .Input:focus+.Title {
+    font-size: 11.2px;
+    font-weight: $font-weight-normal;
+    top: 6px;
+  }
+
+
+
+
+
+
+
+  .Input:valid[wasBlured="true"] {
+    border: 1px solid rgba($color-green, 0.6);
+  }
+
+  .Input:valid+.Title {
+    font-size: 11.2px;
+    font-weight: $font-weight-normal;
+    top: 6px;
+    left: 17px;
+  }
+
+
+
+
+
+
+  .Input:invalid[wasBlured="true"] {
+    border-bottom: 2px solid $color-orange;
+  }
+
+  .Input:invalid[wasBlured="true"]~.Warning {
+    display: block;
+  }
+
+  .Input:invalid+.Title {
+    font-size: 11.2px;
+    font-weight: $font-weight-normal;
+    top: 6px;
+    left: 17px;
+  }
+
+}

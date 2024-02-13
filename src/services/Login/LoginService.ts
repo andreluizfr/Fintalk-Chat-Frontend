@@ -1,21 +1,20 @@
-import { makeHttpClient } from "@Main/factories/infrastructure/makeHttpClient";
-import { makePersistentStorage } from "@Main/factories/infrastructure/makePersistentStorage";
-import { queryClient } from "@Main/providers/ReactQueryProvider";
+import { makeHttpClient } from "@factories/makeHttpClient";
+import { makePersistentStorage } from "@factories/makePersistentStorage";
+//import { queryClient } from "@providers/ReactQueryProvider";
 
-import { HttpStatusCode } from "@Infrastructure/httpClient/HttpStatusCode";
-import { IHttpError } from "@Infrastructure/httpClient/IHttpError";
-import { IHttpResponse } from "@Infrastructure/httpClient/IHttpResponse";
+import { IHttpError } from "@entities/httpClient/IHttpError";
+import { IHttpResponse } from "@entities/httpClient/IHttpResponse";
 
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-import { FetchUserHttpRequest } from "../FetchUser/FetchUserService";
-import { GetMediaListsHttpRequest } from "../GetMediaLists/GetMediaListsService";
+//import { FetchUserHttpRequest } from "../FetchUser/FetchUserService";
+//import { GetMediaListsHttpRequest } from "../GetMediaLists/GetMediaListsService";
 
 export const LoginService = (
-    email: string | null,
-    password: string | null
+    email: string,
+    password: string
 ) => {
 
     const queryResult = useQuery<IHttpResponse<string>, IHttpError>(
@@ -35,20 +34,14 @@ export const LoginService = (
 }
 
 async function LoginHttpRequest (
-    email: string | null,
-    password: string | null,
+    email: string,
+    password: string,
 ): Promise<IHttpResponse<string>>{
-    
-    if(!email || !password)
-        throw {
-            httpStatusCode: null,
-            message: 'Erro: Email ou senha não foram identificados.'
-        };
 
     const httpClient = makeHttpClient<string>();
 
     const httpResponse = httpClient.post(
-        '/auth/login',
+        '/login',
         {email, password}
     );
 
@@ -65,34 +58,13 @@ function HandleLoginQuerySuccess(data: IHttpResponse<string>, navigate: Navigate
         const persistentStorage = makePersistentStorage();
         persistentStorage.set("x-access-token", accessToken);
 
-        setTimeout(()=>navigate("/whoIsWatching", { replace: true }), 2000);
+        setTimeout(()=>navigate("/", { replace: true }), 2000);
 
-        queryClient.prefetchQuery({queryKey: ['fetchUser'], queryFn: FetchUserHttpRequest });
-        queryClient.prefetchQuery({queryKey: ['getMediaLists'], queryFn: GetMediaListsHttpRequest });
+        //queryClient.prefetchQuery({queryKey: ['fetchUser'], queryFn: FetchUserHttpRequest });
+        //queryClient.prefetchQuery({queryKey: ['getMediaLists'], queryFn: GetMediaListsHttpRequest });
     }
 }
 
 function HandleLoginQueryError(httpError: IHttpError) {
-
     console.error(httpError);
-
-    switch(httpError.httpStatusCode){ 
-
-        case HttpStatusCode.Bad_Request: { //Bad Request. Erro nos parametros passados. Não há tratamento
-            break;
-        }
-        case HttpStatusCode.Forbidden: { //Forbidden. Email ou senha errada. Não há tratamento
-            break;
-        }
-        case HttpStatusCode.Internal_Server_Error: { //Internal server error. erro durante a criaçao das entidades, não há tratamento
-            break;
-        }
-        case null: { //Erro desconhecido, servidor indisponível, ou não passou em validação para inciar a request
-            break;
-        }
-
-        default: { //erro não mapeado pelo controlador do backend, não há tratamento
-            break;
-        }
-    }
 }
