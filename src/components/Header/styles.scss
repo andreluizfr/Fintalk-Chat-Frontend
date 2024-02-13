@@ -7,11 +7,14 @@
   top: 0;
   width: 100%;
   padding: 1rem;
+  z-index: 9999;
 
   &[data-theme="light"] {
+    background-color: $color-white;
     border-bottom: 1px solid rgba($color-black, 0.24);
   }
   &[data-theme="dark"] {
+    background-color: $color-neutral-800;
     border-bottom: 1px solid rgba($color-white, 0.24);
   }
 
