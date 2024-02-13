@@ -9,7 +9,7 @@ export default function HomePage(): JSX.Element {
   const languageStore = useSelector((state: StoreState) => state.language);
 
   return (
-    <main className='home-page'>
+    <main className='home-page' data-theme={themeStore.selectedTheme}>
       <h1 className='welcome-text' data-theme={themeStore.selectedTheme}>
         {languageStore.messages.welcome}
       </h1>

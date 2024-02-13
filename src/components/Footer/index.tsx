@@ -11,9 +11,10 @@ import { useSelector } from 'react-redux';
 export default function Footer() {
 
   const languageStore = useSelector((state: StoreState) => state.language);
+  const themeStore = useSelector((state: StoreState) => state.theme);
 
   return (
-    <footer className='page-footer'>
+    <footer className='page-footer' data-theme={themeStore.selectedTheme}>
       <div className='footer-container'>
         <section className='section-column'>
           <div className='section-wrapper'>
