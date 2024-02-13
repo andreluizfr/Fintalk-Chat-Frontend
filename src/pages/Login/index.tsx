@@ -50,7 +50,7 @@ export default function LoginPage(): JSX.Element {
   }, [loginResult.isError, loginResult.data, loginResult.error]);
 
   return (
-    <main className='login-page'>
+    <main className='login-page' data-theme={themeStore.selectedTheme}>
 
         <form className='Login-form' onSubmit={onSubmit}>
             <h1 className='Title'>Entrar</h1>

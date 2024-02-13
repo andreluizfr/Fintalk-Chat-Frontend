@@ -6,6 +6,7 @@ import LoadingPage from "@pages/Loading";
 const NotFoundPage = lazy(() => import('@pages/NotFound'));
 const HomePage = lazy(() => import('@pages/Home'));
 const LoginPage = lazy(() => import('@pages/Login'));
+const ChatPage = lazy(() => import('@pages/Chat'));
 
 function Router() {
 
@@ -23,6 +24,10 @@ function Router() {
             {
               path: "/login",
               element: <LoginPage />,
+            },
+            {
+              path: "/chat",
+              element: <ChatPage />,
             },
             {
               path: "*",

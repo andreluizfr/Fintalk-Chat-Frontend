@@ -1,0 +1,125 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.chat-container {
+  flex: 1 1;
+  min-width: 24rem;
+  position: relative;
+  @include flex-column-start-center;
+  align-items: stretch;
+
+  > .chat-container-header {
+    position: sticky;
+    top: 0;
+    @include flex-row-space-between-center;
+    gap: 1rem;
+    height: 5rem;
+    padding: 1rem;
+    border-bottom: 1px solid rgba($color-black, 0.24);
+
+    > .chat-icon {
+      height: 3rem;
+      width: auto;
+      object-fit: cover;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    > .chat-infos {
+      flex: 1;
+      @include flex-column-center-start;
+
+      > .chat-name {
+        font-size: $font-size-medium;
+        font-weight: $font-weight-semi-bold;
+        color: $color-black;
+      }
+
+      > .members {
+        font-size: $font-size-small;
+        font-weight: $font-weight-semi-bold;
+        color: $color-neutral-600;
+      }
+
+    }
+
+    > .chat-options {
+
+      > .options-icon {
+        width: 2rem;
+        height: auto;
+        cursor: pointer;
+      }
+    }
+  }
+
+  > .messages-container {
+    flex: 1;
+    @include flex-column-start-start;
+    padding: 1rem;
+    background-color: $color-neutral-100;
+
+    > .message {
+      @include flex-row-start-start;
+      width: 100%;
+      min-height: 4rem;
+      padding: .5rem;
+      gap: .5rem;
+
+      &[data-selfie-message] {
+        justify-content: flex-end;
+
+        .message-text {
+          border-radius: .4rem;
+          border-top-right-radius: 0;
+
+          text-align: right;
+        }
+      }
+
+      > .user-icon {
+        width: 2rem;
+        height: 2rem;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      > .message-infos-wrapper {
+        @include flex-column-start-start;
+        width: 100%;
+
+        > .first-row {
+          
+          > .username {
+            color: $color-neutral-900;
+            font-size: $font-size-normal;
+            font-weight: $font-weight-semi-bold;
+          }
+          > .time {
+            margin-left: 1rem;
+            color: $color-neutral-650;
+            font-size: $font-size-small;
+            font-weight: $font-weight-normal;
+          }
+        }
+      }
+
+      .message-text {
+        padding: .6rem;
+        background-color: $color-neutral-200;
+
+        border-radius: .4rem;
+        border-top-left-radius: 0;
+
+        color: $color-neutral-900;
+        font-size: $font-size-small;
+        font-weight: $font-weight-normal;
+
+        width: fit-content;
+        text-align: left;
+        word-break: break-word;
+      }
+    }
+  }
+
+}
