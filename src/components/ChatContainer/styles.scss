@@ -104,6 +104,8 @@
         justify-content: flex-end;
 
         .message-text {
+          background-color: $color-pink;
+          color: $color-white;
           border-radius: .4rem;
           border-top-right-radius: 0;
 
