@@ -22,18 +22,7 @@ export const FetchUserService = () => {
     {
       enabled: true,
       staleTime: 5 * 1000,
-      cacheTime: 60 * 60 * 1000,
-      initialData: () => {
-        const persistentStorage = makePersistentStorage();
-        const user = persistentStorage.get<User>("user");
-
-        if (user)
-          return {
-            message: "Usuário dado pelo storage",
-            data: user
-          };
-        else return undefined;
-      },
+      cacheTime: 60 * 60 * 1000
     }
   );
 
@@ -63,7 +52,7 @@ export async function FetchUserHttpRequest() {
 
   const httpClient = makeHttpClient<User>();
   const httpResponse = httpClient.get(
-    '/user/fetch',
+    '/fetchUser',
     { headers: { Authorization: `Bearer ${accessToken}` } }
   );
 

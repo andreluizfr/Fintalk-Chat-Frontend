@@ -6,6 +6,7 @@
   min-height: 100vh;
   min-height: 100svh;
   width: 100%;
+  min-width: 26rem;
 
   &[data-theme="light"] {
     background-color: $color-white;

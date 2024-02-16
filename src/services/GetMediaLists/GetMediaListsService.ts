@@ -1,13 +1,13 @@
-import { makeHttpClient } from "@Main/factories/infrastructure/makeHttpClient";
-import { makePersistentStorage } from "@Main/factories/infrastructure/makePersistentStorage";
+import { makeHttpClient } from "@factories/makeHttpClient";
+import { makePersistentStorage } from "@factories/makePersistentStorage";
 
-import { HttpStatusCode } from "@Infrastructure/httpClient/HttpStatusCode";
-import { IHttpError } from "@Infrastructure/httpClient/IHttpError";
-import { IHttpResponse } from "@Infrastructure/httpClient/IHttpResponse";
+import { HttpStatusCode } from "@entities/httpClient/HttpStatusCode";
+import { IHttpError } from "@entities/httpClient/IHttpError";
+import { IHttpResponse } from "@entities/httpClient/IHttpResponse";
 
-import { MediaList } from "@Model/entities/MediaList";
+//import { MediaList } from "@Model/entities/MediaList";
 
-import { removeUser } from "@Infrastructure/store/redux/features/userSlice";
+import { removeUser } from "@store/redux/features/userSlice";
 import { AnyAction, Dispatch } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 
@@ -15,7 +15,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 
 export const GetMediaListsService = () => {
-
+    /*
     const queryResult = useQuery<IHttpResponse<MediaList[]>, IHttpError>(
         ['getMediaLists'],
         async () => GetMediaListsHttpRequest(),
@@ -86,4 +86,5 @@ function HandleGetMediaListsQueryError(httpError: IHttpError, dispatch: Dispatch
             break;
         }
     }
+    */
 }

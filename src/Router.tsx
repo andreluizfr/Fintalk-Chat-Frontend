@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ErrorBoundary } from 'react-error-boundary';
 
 import LoadingPage from "@pages/Loading";
+import Auth from '@components/Auth';
 const NotFoundPage = lazy(() => import('@pages/NotFound'));
 const HomePage = lazy(() => import('@pages/Home'));
 const LoginPage = lazy(() => import('@pages/Login'));
@@ -27,7 +28,7 @@ function Router() {
             },
             {
               path: "/chat",
-              element: <ChatPage />,
+              element: <Auth><ChatPage /></Auth>,
             },
             {
               path: "*",

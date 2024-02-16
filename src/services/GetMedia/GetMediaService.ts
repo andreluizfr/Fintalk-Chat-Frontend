@@ -1,12 +1,12 @@
-import { makeHttpClient } from "@Main/factories/infrastructure/makeHttpClient";
+import { makeHttpClient } from "@factories/makeHttpClient";
 
-import { HttpStatusCode } from "@Infrastructure/httpClient/HttpStatusCode";
-import { IHttpError } from "@Infrastructure/httpClient/IHttpError";
-import { IHttpResponse } from "@Infrastructure/httpClient/IHttpResponse";
+import { HttpStatusCode } from "@entities/httpClient/HttpStatusCode";
+import { IHttpError } from "@entities/httpClient/IHttpError";
+import { IHttpResponse } from "@entities/httpClient/IHttpResponse";
 
-import { Media } from "@Model/entities/Media";
+//import { Media } from "@Model/entities/Media";
 
-import { removeUser } from "@Infrastructure/store/redux/features/userSlice";
+import { removeUser } from "@store/redux/features/userSlice";
 import { AnyAction, Dispatch } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 
@@ -14,7 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 
 export const GetMediaService = (mediaId: string | null) => {
-
+    /*
     const queryResult = useQuery<IHttpResponse<Media>, IHttpError>(
         ['getMedia'],
         async () => GetMediaHttpRequest(mediaId),
@@ -78,4 +78,5 @@ function HandleGetMediaQueryError(httpError: IHttpError, dispatch: Dispatch<AnyA
             break;
         }
     }
+    */
 }

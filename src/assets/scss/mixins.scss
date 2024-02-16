@@ -135,6 +135,20 @@
     align-items: flex-start;
 }
 
+@mixin flex-column-space-between-end{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+@mixin flex-row-space-between-end{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
 @mixin mq-small{
     @media only screen and (min-width: 576px) {
         @content;

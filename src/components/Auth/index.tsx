@@ -2,7 +2,7 @@ import Loading from "@pages/Loading";
 import { FetchUserService } from "@services/FetchUser/FetchUserService";
 import React from "react";
 
-export function AuthProvider({ children }: React.HTMLAttributes<HTMLElement>): JSX.Element {
+export default function AuthProvider({ children }: React.HTMLAttributes<HTMLElement>): JSX.Element {
 
   const fetchUserResult = FetchUserService();
 
