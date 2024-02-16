@@ -1,7 +1,7 @@
 ## Algumas considerações
 - Esse projeto está num nível muito abaixo do que eu gostaria de entregar, então já adiando que queria poder trabalhar nele um pouco mais e isso não é o padrão que eu sigo.
 - Acabei perdendo muito tempo implementando as funcionalidades e a lógica da aplicação o que me fez pecar no UI/UX do site. Então o site acabou ficando com essa sensação de morto, sem transições e animações :(
-- Acabei também não implementando a parte de editar informações do chat e até mesmo a página de cadastro de usuário, pra poder finalizar as features mais importantes pra mim que seriam a parte do chat.
+- Acabei também não implementando a parte de editar informações do chat e até mesmo a página de cadastro de usuário, pra poder finalizar as features mais importantes pra mim que seriam da parte do chat.
 - Irei continuar fazendo melhorias numa branch secundária, então caso tenham interesse em ver uma versão melhorada estarei atualizando lá.
 
 ## Como rodar o projeto localmente
