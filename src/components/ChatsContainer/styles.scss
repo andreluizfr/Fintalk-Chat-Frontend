@@ -7,13 +7,23 @@
   max-width: 20rem;
   @include flex-column-start-center;
   align-items: stretch;
-  border-right: 1px solid rgba($color-black, 0.24);
+  &[data-theme="light"] {
+    border-right: 1px solid rgba($color-black, 0.24);
+  }
+  &[data-theme="dark"] {
+    border-right: 1px solid rgba($color-white, 0.24);
+  }
 
   > .chats-header {
     @include flex-column-start-start;
     gap: 1rem;
     padding: 1rem;
-    border-bottom: 1px solid rgba($color-black, 0.24);
+    &[data-theme="light"] {
+      border-bottom: 1px solid rgba($color-black, 0.24);
+    }
+    &[data-theme="dark"] {
+      border-bottom: 1px solid rgba($color-white, 0.24);
+    }
 
     > .chats-header-toolbar {
       @include flex-row-space-between-center;
@@ -74,6 +84,12 @@
     flex: 1;
     @include flex-column-start-center;
     padding: 1rem;
+    &[data-theme="light"] {
+      color: $color-black;
+    }
+    &[data-theme="dark"] {
+      color: $color-white;
+    }
 
     > .chat {
       @include flex-row-start-center;
@@ -168,7 +184,12 @@
         @include flex-row-space-between-center;
         width: 100%;
         padding: .5rem;
-        border-bottom: 1px solid rgba(0,0,0,0.24);
+        &[data-theme="light"] {
+          border-bottom: 1px solid rgba($color-black, 0.24);
+        }
+        &[data-theme="dark"] {
+          border-bottom: 1px solid rgba($color-white, 0.24);
+        }
 
         > .chat-name-input {
           width: 80%;

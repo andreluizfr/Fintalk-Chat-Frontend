@@ -6,10 +6,12 @@ export interface UserState {
   loggedUser: User | null;
 }
 
+const persistentStorage = makePersistentStorage();
+
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    loggedUser: null
+    loggedUser: persistentStorage.get<User>("user"),
   } as UserState,
   reducers: {
     addUser(state, action) {

@@ -8,9 +8,11 @@
   @include flex-column-start-center;
   align-items: stretch;
   &[data-theme="light"] {
+    color: $color-black;
     background-color: $color-white;
   }
   &[data-theme="dark"] {
+    color: $color-white;
     background-color: $color-neutral-900;
   }
 
@@ -21,7 +23,12 @@
     gap: 1rem;
     height: 5rem;
     padding: 1rem;
-    border-bottom: 1px solid rgba($color-black, 0.24);
+    &[data-theme="light"] {
+      border-bottom: 1px solid rgba($color-black, 0.24);
+    }
+    &[data-theme="dark"] {
+      border-bottom: 1px solid rgba($color-white, 0.24);
+    }
 
     > .chat-icon {
       height: 3rem;

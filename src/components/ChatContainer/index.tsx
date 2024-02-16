@@ -100,7 +100,7 @@ export default function ChatContainer({chatId}: props) {
   else
     return (
       <article className='chat-container'>
-        <header className='chat-container-header'>
+        <header className='chat-container-header' data-theme={themeStore.selectedTheme}>
           <img 
             className='chat-icon'
             src="https://static.vecteezy.com/ti/vetor-gratis/p3/3769720-group-chat-linear-icon-thin-line-illustration-chat-box-com-grupo-de-pessoas-dentro-do-contorno-simbolo-isolado-esboco-desenho-vetor.jpg"

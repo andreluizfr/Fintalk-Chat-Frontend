@@ -26,7 +26,9 @@ export default function ChatsContainer({setChatId}: props) {
   const user = userStore.loggedUser;
 
   const chatStore = useSelector((state: StoreState) => state.chat);
-  const chats = user ? chatStore.chats.filter(chat=>chat.members.includes(user)) : [];
+  const allChats = chatStore.chats;
+  const chats = user ? allChats.filter(chat=>chat.members.find(member=>member.email===user.email)?true:false) : [];
+  console.log(user, chats);
 
   const newChatModal = useRef<HTMLDivElement | null>(null);
   const chatNameInput = useRef<HTMLInputElement | null>(null);
@@ -60,9 +62,9 @@ export default function ChatsContainer({setChatId}: props) {
   }
 
   return (
-    <aside className='chats-container'>
+    <aside className='chats-container' data-theme={themeStore.selectedTheme}>
 
-      <header className='chats-header'>
+      <header className='chats-header' data-theme={themeStore.selectedTheme}>
         <div className='chats-header-toolbar'>
           <h1 className='title' data-theme={themeStore.selectedTheme}>Messages</h1>
           <img 
@@ -82,7 +84,7 @@ export default function ChatsContainer({setChatId}: props) {
       </header>
       
       {chats.length > 0 &&
-        <main className='chats'>
+        <main className='chats' data-theme={themeStore.selectedTheme}>
 
           {chats.map(chat=>{
             console.log(chat);
@@ -112,14 +114,14 @@ export default function ChatsContainer({setChatId}: props) {
       }
 
       {chats.length === 0 &&
-        <main className='chats'>
+        <main className='chats' data-theme={themeStore.selectedTheme}>
           {"Você ainda não participa de nenhum grupo :("}
         </main>
       }
 
       <div className='new-chat-modal-background' ref={newChatModal} onClick={()=>hideModal()}>
         <article className='new-chat-modal' onClick={(e)=>e.stopPropagation()}>
-          <form className='create-chat-wrapper'>
+          <form className='create-chat-wrapper' data-theme={themeStore.selectedTheme}>
             <input className='chat-name-input' placeholder='Enter the chat name' ref={chatNameInput}/>
             <img 
               className='create-chat-icon'
@@ -131,7 +133,7 @@ export default function ChatsContainer({setChatId}: props) {
 
           <div className='all-chats'>
 
-            {chats.length > 0 && chats.map(chat=>
+            {allChats.length > 0 && allChats.map(chat=>
               <div className='chat-wrapper'>
                 <p className='chat-name'>{chat.name}</p>
                 <RiChatForwardLine className='enter-chat-icon' />
@@ -139,7 +141,7 @@ export default function ChatsContainer({setChatId}: props) {
             )} 
           
             {
-              chats.length == 0 && "Nenhum chat disponível"
+              allChats.length == 0 && "Nenhum chat disponível"
             } 
 
           </div>
