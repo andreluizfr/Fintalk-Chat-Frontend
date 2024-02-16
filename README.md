@@ -14,3 +14,6 @@ Após isso, para executar o projeto:
 ``` npm run dev ```
 
 Agora é só acessar http://localhost
+
+## Deploy
+Se encontra em https://fintalkchat.netlify.app/
