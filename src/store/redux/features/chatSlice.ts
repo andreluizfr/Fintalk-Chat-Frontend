@@ -18,13 +18,13 @@ const chatSlice = createSlice({
       state.chats.push(action.payload); //action.payload é do tipo Chat
 
       const persistentStorage = makePersistentStorage();
-      persistentStorage.set("chats", action.payload);
+      persistentStorage.set("chats", state.chats);
     },
     removeChat(state, action) {
       state.chats.filter(chat => chat.id === action.payload); //action.payload é o id do chat
 
       const persistentStorage = makePersistentStorage();
-      persistentStorage.set("chats", action.payload);
+      persistentStorage.set("chats", state.chats);
     },
     editChat(state, action) {
       state.chats = state.chats.map(chat => {
@@ -34,14 +34,14 @@ const chatSlice = createSlice({
       })
 
       const persistentStorage = makePersistentStorage();
-      persistentStorage.set("chats", action.payload);
+      persistentStorage.set("chats", state.chats);
     },
     addMessage(state, action) {
       state.chats.find(chat => chat.id === action.payload.chatId) //action.payload é {chatId: string e message: Message}
         ?.messages.push(action.payload.message);
 
       const persistentStorage = makePersistentStorage();
-      persistentStorage.set("chats", action.payload);
+      persistentStorage.set("chats", state.chats);
     }
   }
 });
