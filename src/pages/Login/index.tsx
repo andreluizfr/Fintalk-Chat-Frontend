@@ -76,7 +76,7 @@ export default function LoginPage(): JSX.Element {
             />
 
             <button className='Login-button' type='submit'>
-                {languageStore.labels.show}
+                {languageStore.labels.login}
             </button>
 
             <div className='Remember-me-and-need-help-container'>
