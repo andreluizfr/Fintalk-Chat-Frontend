@@ -12,11 +12,20 @@
     height: 50px;
     padding: 24px 16px 4px 16px;
     border-radius: 3px;
-    background-color: $color-slate-900;
-    border: 1px solid rgba($color-slate-900, 0.6);
-
     font-size: 16px;
-    color: $color-slate-100;
+
+    &[data-theme="light"] {
+      background-color: $color-white;
+      border: 1px solid $color-neutral-300;
+      color: $color-neutral-800;
+      color-scheme: light;
+    }
+    &[data-theme="dark"] {
+      background-color: $color-neutral-900;
+      border: 1px solid rgba($color-neutral-900, 0.6);
+      color: $color-slate-100;
+      color-scheme: dark;
+    }
   }
 
   .Title {
@@ -26,27 +35,45 @@
 
     font-size: 16px;
     font-weight: 400;
-    color: $color-slate-100;
 
     pointer-events: none;
-    transition: .2s;
+    transition: all .2s;
+
+    &[data-theme="light"] {
+      color: $color-neutral-900;
+    }
+    &[data-theme="dark"] {
+      color: $color-slate-100;
+    }
   }
 
   .Warning {
     display: none;
     margin-top: 5px;
     font-size: 12.8px;
-    color: $color-orange;
+
+    &[data-theme="light"] {
+      color: $color-red;
+    }
+    &[data-theme="dark"] {
+      color: $color-orange;
+    }
   }
 
   .Show {
     position: absolute;
     top: 16px; //altura do input é 3rem fixos
     right: 16px;
-    color: $color-slate-100;
 
     z-index: 9999;
     cursor: pointer;
+
+    &[data-theme="light"] {
+      color: $color-neutral-900;
+    }
+    &[data-theme="dark"] {
+      color: $color-slate-100;
+    }
   }
 
 
@@ -70,7 +97,22 @@
 
 
   .Input:valid[wasBlured="true"] {
-    border: 1px solid rgba($color-green, 0.6);
+
+    &[data-theme="light"] {
+      border-bottom: 1px solid $color-dark-green;
+    }
+    &[data-theme="dark"] {
+      border-bottom: 1px solid $color-light-green;
+    }
+
+    + .Title {
+      &[data-theme="light"] {
+        color: $color-dark-green;
+      }
+      &[data-theme="dark"] {
+        color: $color-light-green;
+      }
+    }
   }
 
   .Input:valid+.Title {
@@ -86,7 +128,22 @@
 
 
   .Input:invalid[wasBlured="true"] {
-    border-bottom: 2px solid $color-orange;
+    
+    &[data-theme="light"] {
+      border-bottom: 2px solid $color-red;
+    }
+    &[data-theme="dark"] {
+      border-bottom: 2px solid $color-orange;
+    }
+
+    + .Title {
+      &[data-theme="light"] {
+        color: $color-red;
+      }
+      &[data-theme="dark"] {
+        color: $color-orange;
+      }
+    }
   }
 
   .Input:invalid[wasBlured="true"]~.Warning {
@@ -99,5 +156,4 @@
     top: 6px;
     left: 17px;
   }
-
 }

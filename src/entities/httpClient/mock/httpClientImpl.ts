@@ -6,8 +6,11 @@ import { HttpStatusCode } from '../HttpStatusCode';
 import User from '@entities/User';
 import Message from '@entities/Message';
 
-import { v4 as uuidv4 } from 'uuid';
 import { loremIpsumGenerator } from '@utils/loremIpsumGenerator';
+
+import { makePersistentStorage } from '@factories/makePersistentStorage';
+
+import { v4 as uuidv4 } from 'uuid';
 
 export class AxiosHttpClientImpl<T> implements IHttpClient<T> {
 
@@ -49,13 +52,27 @@ export class AxiosHttpClientImpl<T> implements IHttpClient<T> {
   }
 
   private mockCreateUser(user: User): Promise<IHttpResponse<T>> {
-    return new Promise<IHttpResponse<T>>(resolve => {
+
+    return new Promise<IHttpResponse<T>>((resolve, reject) => {
+
+      const persistentStorage = makePersistentStorage();
+
       setTimeout(() => {
-        resolve({
-          httpStatusCode: HttpStatusCode.Created,
-          message: "User created.",
-          data: user as T
-        } satisfies IHttpResponse<T>);
+        const allUsers = persistentStorage.get<User[]>("users");
+        const userExists = allUsers?.find(u => u.email === user.email);
+
+        if(userExists) {
+          reject({
+            httpStatusCode: HttpStatusCode.Unprocessable_Entity,
+            message: "Email is duplicated."
+          } satisfies IHttpError);
+        } else {
+          resolve({
+            httpStatusCode: HttpStatusCode.Created,
+            message: "User created.",
+            data: user as T
+          } satisfies IHttpResponse<T>);
+        }
       }, 1000);
     });
   }
@@ -81,16 +98,14 @@ export class AxiosHttpClientImpl<T> implements IHttpClient<T> {
         if(authorization){
           const token = (authorization as string).split("Bearer ")[1];
           console.log("token received:", token);
-          const email = token.split(";")[1];
-          const password = token.split(";")[2];
+
+          const persistentStorage = makePersistentStorage();
+          const user = persistentStorage.get<User>("user");
+
           resolve({
             httpStatusCode: HttpStatusCode.Ok,
             message: "Succesful login.",
-            data: {
-              username: "usuario-teste",
-              password: password,
-              email: email
-            } satisfies User as T
+            data: user as T
           } satisfies IHttpResponse<T>);
         }
         

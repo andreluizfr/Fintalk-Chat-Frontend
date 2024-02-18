@@ -7,6 +7,7 @@ import Auth from '@components/Auth';
 const NotFoundPage = lazy(() => import('@pages/NotFound'));
 const HomePage = lazy(() => import('@pages/Home'));
 const LoginPage = lazy(() => import('@pages/Login'));
+const SignupPage = lazy(() => import('@pages/Signup'));
 const ChatPage = lazy(() => import('@pages/Chat'));
 
 function Router() {
@@ -29,6 +30,10 @@ function Router() {
             {
               path: "/chat",
               element: <Auth><ChatPage /></Auth>,
+            },
+            {
+              path: "/signup",
+              element: <SignupPage />,
             },
             {
               path: "*",
