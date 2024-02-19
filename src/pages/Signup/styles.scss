@@ -22,18 +22,18 @@
     @include flex-column-start-start;
     gap: 1rem;
     padding: 4rem 2rem;
-    border-radius: .4rem;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    @include mq-small {
+      width: 27rem;
+      border-radius: .4rem;
+    }
 
     &[data-theme="light"] {
       background-color: $color-neutral-300;
     }
     &[data-theme="dark"] {
       background-color: $color-neutral-700;
-    }
-
-    @include mq-small {
-      width: 27rem;
     }
 
     &>.Title {
