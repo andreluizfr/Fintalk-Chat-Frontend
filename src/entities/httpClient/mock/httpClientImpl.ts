@@ -111,10 +111,11 @@ export class AxiosHttpClientImpl<T> implements IHttpClient<T> {
 
         if(authorization){
           const token = (authorization as string).split("Bearer ")[1];
-          console.log("token received:", token);
+          const email = token.split(";")[1];
 
           const persistentStorage = makePersistentStorage();
-          const user = persistentStorage.get<User>("user");
+          const users = persistentStorage.get<User[]>("users");
+          const user = users?.find(user=>user.email===email) ? users?.find(user=>user.email===email) : null;
 
           resolve({
             httpStatusCode: HttpStatusCode.Ok,

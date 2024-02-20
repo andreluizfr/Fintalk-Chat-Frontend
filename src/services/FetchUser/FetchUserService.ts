@@ -7,11 +7,11 @@ import User from "@entities/User";
 
 import { addUser, removeUser } from '@store/redux/features/userSlice';
 
-import { Dispatch, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { AnyAction } from "@reduxjs/toolkit";
+import { AnyAction, Dispatch } from "@reduxjs/toolkit";
 
 
 export const FetchUserService = () => {

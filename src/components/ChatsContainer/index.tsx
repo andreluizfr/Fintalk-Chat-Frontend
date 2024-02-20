@@ -28,7 +28,6 @@ export default function ChatsContainer({setChatId}: props) {
   const chatStore = useSelector((state: StoreState) => state.chat);
   const allChats = chatStore.chats;
   const chats = user ? allChats.filter(chat=>chat.members.find(member=>member.email===user.email)?true:false) : [];
-  console.log(user, chats);
 
   const newChatModal = useRef<HTMLDivElement | null>(null);
   const chatNameInput = useRef<HTMLInputElement | null>(null);
