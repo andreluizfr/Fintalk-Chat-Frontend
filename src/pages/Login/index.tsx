@@ -7,31 +7,35 @@ import { StoreState } from '@store/redux/config';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { useForm } from "react-hook-form";
+
+interface loginForm {
+  email: string,
+  password: string,
+}
 
 export default function LoginPage(): JSX.Element {
 
   const themeStore = useSelector((state: StoreState) => state.theme);
   const languageStore = useSelector((state: StoreState) => state.language);
 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const { register, handleSubmit } = useForm<loginForm>();
 
-  function onSubmit (e: React.FormEvent){
-    e.preventDefault();
+  const [email, setEmail] = useState<string | null>(null);
+  const [password, setPassword] = useState<string | null>(null);
 
-    const inputs = document.getElementsByClassName("Input") as HTMLCollection;
-
-    setEmail((inputs[0] as HTMLInputElement).value);
-    setPassword((inputs[1] as HTMLInputElement).value);
+  function onSubmit(data: loginForm) {
+    setEmail(data.email);
+    setPassword(data.password);
   }
 
   const loginResult = LoginService(email, password);
 
   useEffect(()=>{
-    if(email!=="" && password!==""){
+    if(email && password){
         loginResult.refetch();
-        setEmail("");
-        setPassword("");
+        setEmail(null);
+        setPassword(null);
     }
   }, [email, password]);
 
@@ -43,7 +47,7 @@ export default function LoginPage(): JSX.Element {
         });
 
     else if(loginResult.data?.data)
-        toast.success("Login realizado com sucesso, você será redirecionado em breve.", {
+        toast.success(languageStore.messages.loginSuccessful, {
             position: "top-right",
             hideProgressBar: false
         });
@@ -52,27 +56,24 @@ export default function LoginPage(): JSX.Element {
   return (
     <main className='login-page' data-theme={themeStore.selectedTheme}>
 
-        <form className='Login-form' onSubmit={onSubmit}>
+        <form className='Login-form' onSubmit={handleSubmit(onSubmit)} data-theme={themeStore.selectedTheme}>
+            
             <h1 className='Title'>Entrar</h1>
 
             <StyledInput 
-                title={languageStore.labels.email}
-                warning={languageStore.messages.enterValidEmail}
-                hasShow={false}
-                theme={themeStore.selectedTheme}
-                type='email'
-                required
+              title={languageStore.labels.email}
+              hasShow={false}
+              theme={themeStore.selectedTheme}
+              type='email'
+              {...register("email")}
             />
 
             <StyledInput 
-                title={languageStore.labels.password}
-                warning={languageStore.messages.enterValidPassword}
-                hasShow={true}
-                theme={themeStore.selectedTheme}
-                type='password'
-                minLength={4}
-                maxLength={60}
-                required
+              title={languageStore.labels.password}
+              hasShow={true}
+              theme={themeStore.selectedTheme}
+              type='password'
+              {...register("password")}
             />
 
             <button className='Login-button' type='submit'>
@@ -81,26 +82,23 @@ export default function LoginPage(): JSX.Element {
 
             <div className='Remember-me-and-need-help-container'>
                 <div className='Remember-me-checkbox'>
-                    <label>
-                        <input type='checkbox'/>
-                        <span/>
-                    </label>
+                    <input type='checkbox' data-theme={themeStore.selectedTheme}/>
 
-                    <span>
+                    <span data-theme={themeStore.selectedTheme}>
                       {languageStore.messages.rememberMe}
                     </span>
                 </div>
 
-                <span className='Need-help'>
+                <span className='Need-help' data-theme={themeStore.selectedTheme}>
                   {languageStore.messages.needHelp}
                 </span>
             </div>
 
-            <div className='Aditional-infos-container'>
-                <p className='New-members'>
+            <div className='Aditional-infos-container' data-theme={themeStore.selectedTheme}>
+                <p className='New-members' data-theme={themeStore.selectedTheme}>
                   {languageStore.messages.newHere} <strong>{languageStore.messages.signupNow}</strong>.
                 </p>
-                <p className='Recaptcha-notice'>
+                <p className='Recaptcha-notice' data-theme={themeStore.selectedTheme}>
                   {languageStore.messages.reCaptcha} <a href="#">{languageStore.messages.learnMore}</a>
                 </p>
             </div>

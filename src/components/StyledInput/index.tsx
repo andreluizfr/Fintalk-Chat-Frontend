@@ -47,9 +47,9 @@ const StyledInput = (props: Props, ref: React.ForwardedRef<HTMLInputElement>) =>
   //se foi passada a propriedade warning, coloca a tag p com o warning
   return (
     <div className='Styled-input'>
-      <input {...rest} ref={ref} onBlur={wasBlured} id={title+"Input"} className="Input" data-theme={theme} />
+      <input {...rest} ref={ref} onBlur={wasBlured} id={title+"Input"} className="Input" data-theme={theme} data-validation={warning?true:false}/>
       {title ?
-        <span className='Title' data-theme={theme}>{title}</span>
+        <span className='Title' data-theme={theme} data-validation={warning?true:false}>{title}</span>
         :
         null
       }

@@ -99,10 +99,10 @@
 
   .Input:valid[wasBlured="true"] {
 
-    &[data-theme="light"] {
+    &[data-theme="light"][data-validation=true] {
       border-bottom: 1px solid $color-dark-green;
     }
-    &[data-theme="dark"] {
+    &[data-theme="dark"][data-validation=true] {
       border-bottom: 1px solid $color-light-green;
     }
 
@@ -112,10 +112,10 @@
       top: 6px;
       left: 17px;
 
-      &[data-theme="light"] {
+      &[data-theme="light"][data-validation=true] {
         color: $color-dark-green;
       }
-      &[data-theme="dark"] {
+      &[data-theme="dark"][data-validation=true] {
         color: $color-light-green;
       }
     }
@@ -128,10 +128,10 @@
 
   .Input:invalid[wasBlured="true"] {
     
-    &[data-theme="light"] {
+    &[data-theme="light"][data-validation=true] {
       border-bottom: 2px solid $color-red;
     }
-    &[data-theme="dark"] {
+    &[data-theme="dark"][data-validation=true] {
       border-bottom: 2px solid $color-orange;
     }
 
@@ -141,10 +141,10 @@
       top: 6px;
       left: 17px;
 
-      &[data-theme="light"] {
+      &[data-theme="light"][data-validation=true] {
         color: $color-red;
       }
-      &[data-theme="dark"] {
+      &[data-theme="dark"][data-validation=true] {
         color: $color-orange;
       }
     }

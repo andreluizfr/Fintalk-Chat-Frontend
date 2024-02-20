@@ -15,7 +15,8 @@
       "enterValidPassword": "A senha deve ter entre 4 e 60 caracteres.",
       "emailOrPasswordNull": "Email ou senha não foram identificados.",
       "signupSuccessful": "Registro realizado com sucesso, você será redirecionado em breve.",
-      "enterName": "Informe um nome válido."
+      "enterName": "Informe um nome válido.",
+      "loginSuccessful": "Login realizado com sucesso, você será redirecionado em breve."
     },
     "en": {
       "requestError": "Error: The server couldn't handle the request.",
@@ -33,6 +34,7 @@
       "enterValidPassword": "The password must have between 4 and 60 caracters.",
       "emailOrPasswordNull": "Email or password were not identified.",
       "signupSuccessful": "Signup was successful, you will be redirect soon.",
-      "enterName": "Enter a valid name."
+      "enterName": "Enter a valid name.",
+      "loginSuccessful": "Login was successful, you will be redirect soon."
     }
   }
