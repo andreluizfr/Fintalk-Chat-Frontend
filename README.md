@@ -16,4 +16,5 @@ Após isso, para executar o projeto:
 Agora é só acessar http://localhost
 
 ## Deploy
-Se encontra em https://fintalkchat.netlify.app/
+O deploy oficial pra o teste se encontra em https://fintalkchat.netlify.app/
+O deploy de homologação com minhas melhorias após o prazo se encontra em https://fintalkchat-homolog.netlify.app/
