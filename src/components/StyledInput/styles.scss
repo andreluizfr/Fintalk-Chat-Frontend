@@ -31,7 +31,7 @@
   .Title {
     position: absolute;
     left: 20px;
-    top: 14px;
+    top: 17px;
 
     font-size: 16px;
     font-weight: 400;
@@ -88,6 +88,7 @@
     font-size: 11.2px;
     font-weight: $font-weight-normal;
     top: 6px;
+    left: 17px;
   }
 
 
@@ -106,6 +107,11 @@
     }
 
     + .Title {
+      font-size: 11.2px;
+      font-weight: $font-weight-normal;
+      top: 6px;
+      left: 17px;
+
       &[data-theme="light"] {
         color: $color-dark-green;
       }
@@ -113,13 +119,6 @@
         color: $color-light-green;
       }
     }
-  }
-
-  .Input:valid+.Title {
-    font-size: 11.2px;
-    font-weight: $font-weight-normal;
-    top: 6px;
-    left: 17px;
   }
 
 
@@ -137,6 +136,11 @@
     }
 
     + .Title {
+      font-size: 11.2px;
+      font-weight: $font-weight-normal;
+      top: 6px;
+      left: 17px;
+
       &[data-theme="light"] {
         color: $color-red;
       }
@@ -144,16 +148,10 @@
         color: $color-orange;
       }
     }
+
+    ~ .Warning {
+      display: block;
+    }
   }
 
-  .Input:invalid[wasBlured="true"]~.Warning {
-    display: block;
-  }
-
-  .Input:invalid+.Title {
-    font-size: 11.2px;
-    font-weight: $font-weight-normal;
-    top: 6px;
-    left: 17px;
-  }
 }
