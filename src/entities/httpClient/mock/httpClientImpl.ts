@@ -78,13 +78,27 @@ export class AxiosHttpClientImpl<T> implements IHttpClient<T> {
   }
 
   private mockLogin(body: object) {
-    return new Promise<IHttpResponse<T>>(resolve => {
+    return new Promise<IHttpResponse<T>>((resolve, reject) => {
+      const email = (body as any).email;
+      const password = (body as any).password;
+
+      const persistentStorage = makePersistentStorage();
+      const users = persistentStorage.get<User[]>("users");
+
+      const user = users?.find(user => user.email === email && user.password === password);
+
       setTimeout(() => {
-        resolve({
-          httpStatusCode: HttpStatusCode.Ok,
-          message: "Succesful login.",
-          data: ("mock-access-token;"+(body as any).email+";"+(body as any).password) as T
-        } satisfies IHttpResponse<T>);
+        if(user)
+          resolve({
+            httpStatusCode: HttpStatusCode.Ok,
+            message: "Succesful login.",
+            data: ("mock-access-token;"+email+";"+password) as T
+          } satisfies IHttpResponse<T>);
+        else 
+          reject({
+            httpStatusCode: HttpStatusCode.Bad_Request,
+            message: "Email or password are wrong."
+          } satisfies IHttpError);
       }, 1000);
     });
   }
