@@ -5,15 +5,15 @@ import { useNavigate } from "react-router-dom";
 
 export default function AuthProvider({ children }: React.HTMLAttributes<HTMLElement>): JSX.Element {
 
+  const navigate = useNavigate();
   const fetchUserResult = FetchUserService();
 
   if (fetchUserResult.isLoading || fetchUserResult.isFetching) return <Loading />;
 
-  if (fetchUserResult.data?.data) return <>{children}</>
+  if (fetchUserResult.data?.data) return <>{children}</>;
   
   else {
-    const navigate = useNavigate();
     navigate("/");
-    return <></>
+    return <></>;
   }
 }
