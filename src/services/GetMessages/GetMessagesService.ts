@@ -17,7 +17,7 @@ export const GetMessagesService = (chatId: string | null, membersQuantity: numbe
     ['getMessages'],
     async () => GetMessagesHttpRequest(chatId, membersQuantity),
     {
-      enabled: true,
+      enabled: chatId === null ? false : true,
       staleTime: 0,
       cacheTime: 60 * 60 * 1000,
       refetchInterval: 1000
