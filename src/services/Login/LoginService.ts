@@ -9,8 +9,8 @@ import { useEffect } from "react";
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 export const LoginService = (
-  email: string,
-  password: string
+  email: string | null,
+  password: string | null
 ) => {
 
   const queryResult = useQuery<IHttpResponse<string>, IHttpError>(
@@ -30,9 +30,15 @@ export const LoginService = (
 }
 
 async function LoginHttpRequest(
-  email: string,
-  password: string,
+  email: string | null,
+  password: string | null,
 ): Promise<IHttpResponse<string>> {
+
+  if (!email || !password)
+    throw {
+      httpStatusCode: null,
+      message: "Erro: email e senha são obrigatórios."
+    } as IHttpError;
 
   const httpClient = makeHttpClient<string>();
 
