@@ -86,12 +86,12 @@
     max-height: 70vh;
     max-height: 70svh;
     overflow-y: scroll;
-    padding: 1rem;
+    padding: .5rem 1rem;
     &[data-theme="light"] {
       background-color: $color-neutral-100;
     }
     &[data-theme="dark"] {
-      background-color: $color-black;
+      background-color: $color-neutral-950;
     }
 
     > .message {
@@ -99,19 +99,6 @@
       width: 100%;
       padding: .5rem;
       gap: .5rem;
-
-      &[data-selfie-message] {
-        justify-content: flex-end;
-
-        .message-text {
-          background-color: $color-pink;
-          color: $color-white;
-          border-radius: .4rem;
-          border-top-right-radius: 0;
-
-          text-align: right;
-        }
-      }
 
       > .user-icon {
         width: 2rem;
@@ -123,6 +110,19 @@
       > .message-infos-wrapper {
         @include flex-column-start-start;
         width: 100%;
+
+        &[data-selfie-message] {
+          align-items: flex-end;
+
+          .message-text {
+            background-color: $color-pink;
+            color: $color-white;
+            border-radius: .4rem;
+            border-top-right-radius: 0;
+  
+            text-align: right;
+          }
+        }
 
         > .first-row {
           
@@ -152,54 +152,59 @@
 
       .message-text {
         padding: .6rem;
-        background-color: $color-neutral-200;
-
+        background-color: $color-neutral-50;
         border-radius: .4rem;
         border-top-left-radius: 0;
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
 
         color: $color-neutral-900;
         font-size: $font-size-small;
         font-weight: $font-weight-normal;
-
+        
         width: fit-content;
         text-align: left;
         word-break: break-word;
       }
     }
-  }
 
-  > .message-writing-bar {
-    @include flex-row-space-between-end;
-    gap: 1rem;
-    padding: 1rem;
+    > .message-writing-bar {
+      position: absolute;
+      bottom: .5rem;
+      left: 0;
+      right: 0;
+      margin: auto;
 
-    > .sticker-icon {
-      width: auto;
-      height: 1.8rem;
-      cursor: pointer;
-      &[data-theme="dark"] {
-        filter: invert(1);
+      @include flex-row-space-between-end;
+      gap: 1rem;
+      padding: .5rem;
+      width: 95%;
+      background-color: $color-white;
+      border-radius: .8rem;
+      box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 4px;
+  
+      > .sticker-icon {
+        width: auto;
+        height: 1.8rem;
+        cursor: pointer;
       }
-    }
-
-    > .expanding-textarea {
-      width: 100%; 
-      height: auto;
-      resize: none;
-      padding: .2rem; 
-      align-self: center;
-
-      font-size: $font-size-small;
-      font-weight: $font-weight-normal;
-      letter-spacing: .6px;
-    }
-
-    > .send-icon {
-      width: auto;
-      height: 1.8rem;
-      cursor: pointer;
-      &[data-theme="dark"] {
-        filter: invert(1);
+  
+      > .expanding-textarea {
+        width: 100%; 
+        height: auto;
+        resize: none;
+        padding: .2rem; 
+        border-radius: .2rem;
+        align-self: center;
+  
+        font-size: $font-size-small;
+        font-weight: $font-weight-normal;
+        letter-spacing: .6px;
+      }
+  
+      > .send-icon {
+        width: auto;
+        height: 1.8rem;
+        cursor: pointer;
       }
     }
   }

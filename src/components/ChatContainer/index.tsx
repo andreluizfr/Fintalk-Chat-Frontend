@@ -58,6 +58,7 @@ export default function ChatContainer({chatId}: props) {
   function dispatchNewMessageFromTextarea() {
     console.log(chat);
     console.log(messages);
+    console.log(user);
 
     if(expandingTextarea.current && user) {
 
@@ -130,10 +131,18 @@ export default function ChatContainer({chatId}: props) {
           {messages.map((message, index) => {
             if(message.sender === user?.email)
               return (
-                <article className='message' data-selfie-message key={index}>
-                  <p className='message-text' data-selfie-message>
-                    {message.message}
-                  </p>
+                <article className='message' key={index}>
+                  <div className='message-infos-wrapper' data-selfie-message>
+                    <div className='first-row'>
+                      <span className='time' data-theme={themeStore.selectedTheme}>
+                        {message.time}
+                      </span>
+                    </div>
+
+                    <p className='message-text' data-selfie-message>
+                      {message.message}
+                    </p>
+                  </div>
                 </article>
               );
             else  
@@ -162,21 +171,21 @@ export default function ChatContainer({chatId}: props) {
                 </article>
               );
           })}
-        </main>
 
-        <aside className='message-writing-bar'>
-          <LuSticker className='sticker-icon' data-theme={themeStore.selectedTheme}/>
-          <textarea 
-            className='expanding-textarea' 
-            placeholder='Write a message...' 
-            rows={1}
-            ref={expandingTextarea}
-            onChange={(e)=>adjustSize(e)}
-            onKeyDown={(e)=>dontSkipLine(e)}
-            onKeyUp={(e)=>checkEnterToSendMessage(e)}
-          />
-          <IoMdSend className='send-icon' onClick={()=>dispatchNewMessageFromTextarea()} data-theme={themeStore.selectedTheme}/>
-        </aside>
+          <aside className='message-writing-bar'>
+            <LuSticker className='sticker-icon' data-theme={themeStore.selectedTheme}/>
+            <textarea 
+              className='expanding-textarea' 
+              placeholder='Write a message...' 
+              rows={1}
+              ref={expandingTextarea}
+              onChange={(e)=>adjustSize(e)}
+              onKeyDown={(e)=>dontSkipLine(e)}
+              onKeyUp={(e)=>checkEnterToSendMessage(e)}
+            />
+            <IoMdSend className='send-icon' onClick={()=>dispatchNewMessageFromTextarea()} data-theme={themeStore.selectedTheme}/>
+          </aside>
+        </main>
       </article>
     )
 }
