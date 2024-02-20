@@ -119,7 +119,7 @@ export class AxiosHttpClientImpl<T> implements IHttpClient<T> {
 
           resolve({
             httpStatusCode: HttpStatusCode.Ok,
-            message: "Succesful login.",
+            message: "Succesful user fetching.",
             data: user as T
           } satisfies IHttpResponse<T>);
         }
