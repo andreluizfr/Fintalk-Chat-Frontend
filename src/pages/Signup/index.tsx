@@ -55,7 +55,7 @@ export default function SignupPage(): JSX.Element {
       });
 
     else if (createUserResult.data?.data)
-      toast.success("Registro realizado com sucesso, você será redirecionado em breve.", {
+      toast.success(languageStore.messages.signupSuccessful, {
         position: "top-right",
         hideProgressBar: false
       });
@@ -70,7 +70,7 @@ export default function SignupPage(): JSX.Element {
 
         <StyledInput
           title={"Nome"}
-          warning={""}
+          warning={languageStore.messages.enterName}
           hasShow={false}
           theme={themeStore.selectedTheme}
           type='text'
@@ -102,8 +102,8 @@ export default function SignupPage(): JSX.Element {
 
         <input 
           className="BirthdateInput"
-          type="date"
           data-theme={themeStore.selectedTheme}
+          type="date"
           {...register("birthdate")}
           required
         />

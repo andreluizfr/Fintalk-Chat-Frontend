@@ -59,7 +59,7 @@ async function CreateUserHttpRequest(
   const httpResponse = httpClient.post(
     '/createUser',
     { name, email, password, birthdate }
-  )
+  );
 
   return httpResponse;
 }
