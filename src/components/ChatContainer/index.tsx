@@ -2,6 +2,7 @@ import './styles.scss';
 
 import { LuSticker } from "react-icons/lu";
 import { IoMdSend } from "react-icons/io";
+import { CiMenuKebab } from "react-icons/ci";
 
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,6 +24,7 @@ export default function ChatContainer({chatId}: props) {
   const dispatch = useDispatch();
 
   const themeStore = useSelector((state: StoreState) => state.theme);
+  const languageStore = useSelector((state: StoreState) => state.language);
 
   const userStore = useSelector((state: StoreState) => state.user);
   const user = userStore.loggedUser;
@@ -56,9 +58,6 @@ export default function ChatContainer({chatId}: props) {
   }
   
   function dispatchNewMessageFromTextarea() {
-    console.log(chat);
-    console.log(messages);
-    console.log(user);
 
     if(expandingTextarea.current && user) {
 
@@ -114,16 +113,12 @@ export default function ChatContainer({chatId}: props) {
             </h1>
 
             <span className='members' data-theme={themeStore.selectedTheme}>
-              {membersQuantity} members
+              {membersQuantity + " " + languageStore.labels.members}
             </span>
           </div>
 
           <div className='chat-options'>
-            <img
-              className='options-icon'
-              src="https://cdn2.iconfinder.com/data/icons/communication-vector-for-business/2000/Icon_15-512.png" 
-              alt="more options icon"
-            />
+            <CiMenuKebab className='options-icon' data-theme={themeStore.selectedTheme}/>
           </div>
         </header>
 

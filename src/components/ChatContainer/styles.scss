@@ -71,9 +71,16 @@
     > .chat-options {
 
       > .options-icon {
-        width: 2rem;
+        width: 1.6rem;
         height: auto;
         cursor: pointer;
+
+        &[data-theme="light"] {
+          fill: $color-black;
+        }
+        &[data-theme="dark"] {
+          fill: $color-white;
+        }
       }
     }
   }
