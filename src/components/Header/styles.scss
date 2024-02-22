@@ -111,5 +111,37 @@
         }
       }
     }
+
+    > .user-icon {
+      border-radius: 50%;
+      width: 2.4rem;
+      height: auto;
+      object-fit: cover;
+      object-position: center;
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(0.9);
+        transition: filter 200ms;
+      }
+    }
+
+    > .loggout {
+      font-size: $font-size-normal;
+      font-weight: $font-weight-semi-bold;
+      cursor: pointer;
+
+      &:hover {
+        transition: all 300ms;
+        text-decoration: underline;
+      }
+
+      &[data-theme="light"] {
+        color: $color-black;
+      }
+      &[data-theme="dark"] {
+        color: $color-white;
+      }
+    }
   }
 }

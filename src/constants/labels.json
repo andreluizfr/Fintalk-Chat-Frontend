@@ -23,7 +23,8 @@
       "newMember": "Novo por aqui?",
       "email": "Email",
       "password": "Senha",
-      "members": "Membros"
+      "members": "Membros",
+      "logout": "Sair"
     },
     "en": {
       "signup": "Sign-up",
@@ -46,6 +47,7 @@
       "hide": "HIDE",
       "email": "Email",
       "password": "Password",
-      "members": "Members"
+      "members": "Members",
+      "logout": "Logout"
     }
   }
