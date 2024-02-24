@@ -5,6 +5,7 @@ import logo from '@assets/img/logo.png';
 import { StoreState } from '@store/redux/config';
 import { removeUser } from '@store/redux/features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
 
@@ -13,23 +14,23 @@ export default function Header() {
   const userStore = useSelector((state: StoreState) => state.user);
   const user = userStore.loggedUser;
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   function loggout() {
     dispatch(removeUser());
-    window.location.href="/";
+    navigate("/");
   }
 
   return (
     <header className='page-header' data-theme={themeStore.selectedTheme}>
-      <a href="/">
-        <img 
-          className='logo-img'
-          loading='lazy'
-          decoding='async'
-          src={logo}
-        />
-      </a>
+      <img 
+        className='logo-img'
+        loading='lazy'
+        decoding='async'
+        src={logo}
+        onClick={()=>navigate("/")}
+      />
 
       <div className='buttons-bar-wrapper'>
 
@@ -50,17 +51,13 @@ export default function Header() {
 
         {!user &&
           <>
-            <a href="/login">
-              <button className='login-button' data-theme={themeStore.selectedTheme}>
-                {languageStore.labels.login}
-              </button>
-            </a>
+            <button className='login-button' data-theme={themeStore.selectedTheme} onClick={()=>navigate("/login")}>
+              {languageStore.labels.login}
+            </button>
 
-            <a href="/signup">
-              <button className='signup-button' data-theme={themeStore.selectedTheme}>
-                {languageStore.labels.signup}
-              </button>
-            </a>
+            <button className='signup-button' data-theme={themeStore.selectedTheme} onClick={()=>navigate("/signup")}>
+              {languageStore.labels.signup}
+            </button>
           </>
         }
 

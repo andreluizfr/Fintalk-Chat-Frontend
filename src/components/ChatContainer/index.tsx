@@ -145,7 +145,7 @@ export default function ChatContainer({chatId}: props) {
                 <article className='message' key={index}>
                   <img
                     className='user-icon'
-                    src="https://static.vecteezy.com/system/resources/previews/007/033/152/non_2x/users-people-icon-vector.jpg" 
+                    src="https://static.vecteezy.com/system/resources/previews/007/033/152/non_2x/users-people-icon-vector.jpg"
                     alt="message user icon"
                   />
 
