@@ -89,6 +89,7 @@ export default function SignupPage(): JSX.Element {
           type='text'
           {...register("name")}
           required
+          maxLength={128}
         />
 
         <StyledInput
@@ -99,6 +100,7 @@ export default function SignupPage(): JSX.Element {
           type='email'
           {...register("email")}
           required
+          maxLength={128}
         />
 
         <StyledInput
@@ -108,9 +110,8 @@ export default function SignupPage(): JSX.Element {
           theme={themeStore.selectedTheme}
           type='password'
           {...register("password")}
-          minLength={4}
-          maxLength={60}
           required
+          pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,128}$/"
         />
 
         <input 

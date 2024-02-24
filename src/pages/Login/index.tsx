@@ -79,6 +79,7 @@ export default function LoginPage(): JSX.Element {
             theme={themeStore.selectedTheme}
             type='email'
             {...register("email")}
+            maxLength={128}
           />
 
           <StyledInput 
@@ -87,6 +88,7 @@ export default function LoginPage(): JSX.Element {
             theme={themeStore.selectedTheme}
             type='password'
             {...register("password")}
+            maxLength={128}
           />
 
           <button className='Login-button' type='submit'>
