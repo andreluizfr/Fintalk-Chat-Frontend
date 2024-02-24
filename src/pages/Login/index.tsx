@@ -43,13 +43,15 @@ export default function LoginPage(): JSX.Element {
     if(loginResult.isError && loginResult.error)
         toast.error(loginResult.error.httpStatusCode+": "+loginResult.error.message, {
             position: "top-center",
-            hideProgressBar: true
+            hideProgressBar: true,
+            theme: themeStore.selectedTheme
         });
 
     else if(loginResult.data?.data)
         toast.success(languageStore.messages.loginSuccessful, {
             position: "top-right",
-            hideProgressBar: false
+            hideProgressBar: false,
+            theme: themeStore.selectedTheme
         });
   }, [loginResult.isError, loginResult.data, loginResult.error]);
 

@@ -51,13 +51,15 @@ export default function SignupPage(): JSX.Element {
     if (createUserResult.isError && createUserResult.error)
       toast.error(createUserResult.error.httpStatusCode + ": " + createUserResult.error.message, {
         position: "top-center",
-        hideProgressBar: true
+        hideProgressBar: true,
+        theme: themeStore.selectedTheme
       });
 
     else if (createUserResult.data?.data)
       toast.success(languageStore.messages.signupSuccessful, {
         position: "top-right",
-        hideProgressBar: false
+        hideProgressBar: false,
+        theme: themeStore.selectedTheme
       });
   }, [createUserResult.isError, createUserResult.data, createUserResult.error]);
 
