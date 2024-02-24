@@ -15,8 +15,9 @@
       "enterValidPassword": "Sua senha deve possuir pelo menos 1 número, 1 letra minúscula, 1 letra maiúscula, 1 caractere especial, 8 caracteres e 128 caracteres no máximo.",
       "emailOrPasswordNull": "Email ou senha não foram identificados.",
       "signupSuccessful": "Registro realizado com sucesso, você será redirecionado em breve.",
-      "enterName": "Informe um nome válido.",
-      "loginSuccessful": "Login realizado com sucesso, você será redirecionado em breve."
+      "enterValidName": "Informe um nome válido.",
+      "loginSuccessful": "Login realizado com sucesso, você será redirecionado em breve.",
+      "enterValidBirthdate": "Informe uma data válida"
     },
     "en": {
       "requestError": "Error: The server couldn't handle the request.",
@@ -34,7 +35,8 @@
       "enterValidPassword": "Your password must have at least 1 number, 1 small letter, 1 capital letter, 1 character especial, 8 characters and 128 characters at most.",
       "emailOrPasswordNull": "Email or password were not identified.",
       "signupSuccessful": "Signup was successful, you will be redirect soon.",
-      "enterName": "Enter a valid name.",
-      "loginSuccessful": "Login was successful, you will be redirect soon."
+      "enterValidName": "Enter a valid name.",
+      "loginSuccessful": "Login was successful, you will be redirect soon.",
+      "enterValidBirthdate": "Enter a valid date."
     }
   }

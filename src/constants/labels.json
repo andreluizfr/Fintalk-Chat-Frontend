@@ -24,7 +24,8 @@
       "email": "Email",
       "password": "Senha",
       "members": "Membros",
-      "logout": "Sair"
+      "logout": "Sair",
+      "birthdate": "Data de nascimento"
     },
     "en": {
       "signup": "Sign-up",
@@ -48,6 +49,7 @@
       "email": "Email",
       "password": "Password",
       "members": "Members",
-      "logout": "Logout"
+      "logout": "Logout",
+      "birthdate": "Birthdate"
     }
   }

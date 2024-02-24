@@ -83,7 +83,7 @@ export default function SignupPage(): JSX.Element {
 
         <StyledInput
           title={"Nome"}
-          warning={languageStore.messages.enterName}
+          warning={languageStore.messages.enterValidName}
           hasShow={false}
           theme={themeStore.selectedTheme}
           type='text'
@@ -114,9 +114,10 @@ export default function SignupPage(): JSX.Element {
           pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,128}$/"
         />
 
-        <input 
-          className="BirthdateInput"
-          data-theme={themeStore.selectedTheme}
+        <StyledInput
+          title={languageStore.labels.birthdate}
+          warning={languageStore.messages.enterValidPassword}
+          theme={themeStore.selectedTheme}
           type="date"
           {...register("birthdate")}
           required
