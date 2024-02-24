@@ -1,4 +1,5 @@
 import './styles.scss';
+import logo from '@assets/img/logo.png';
 import StyledInput from '@components/StyledInput';
 
 import { CreateUserService } from '@services/CreateUser/CreateUserService';
@@ -8,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useForm } from "react-hook-form";
+import { Helmet } from 'react-helmet-async';
 
 interface registerForm {
   name: string,
@@ -65,6 +67,15 @@ export default function SignupPage(): JSX.Element {
 
   return (
     <main className='signup-page' data-theme={themeStore.selectedTheme}>
+
+      <Helmet>
+        <meta property="og:title" content="Fintalk chat login" />
+        <meta property="og:url" content="http://localhost/signup" />
+        <meta property="og:image" content={logo} />
+        <meta property="og:image:alt" content="Fintalk logo" />
+        <meta property="og:description" content="Signup to chat with people from worldwide" />
+        <meta property="og:site_name" content="Fintalk" />
+      </Helmet>
 
       <form className='Signup-form' onSubmit={handleSubmit(onSubmit)} data-theme={themeStore.selectedTheme}>
 
