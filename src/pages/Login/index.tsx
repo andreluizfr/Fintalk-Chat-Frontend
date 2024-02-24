@@ -41,7 +41,7 @@ export default function LoginPage(): JSX.Element {
 
   useEffect(()=>{
     if(loginResult.isError && loginResult.error)
-        toast.error(loginResult.error.httpStatusCode+": "+loginResult.error.message, {
+        toast.error(loginResult.error.message, {
             position: "top-center",
             hideProgressBar: true,
             theme: themeStore.selectedTheme

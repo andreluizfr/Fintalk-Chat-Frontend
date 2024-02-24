@@ -49,7 +49,7 @@ export default function SignupPage(): JSX.Element {
 
   useEffect(() => {
     if (createUserResult.isError && createUserResult.error)
-      toast.error(createUserResult.error.httpStatusCode + ": " + createUserResult.error.message, {
+      toast.error(createUserResult.error.message, {
         position: "top-center",
         hideProgressBar: true,
         theme: themeStore.selectedTheme

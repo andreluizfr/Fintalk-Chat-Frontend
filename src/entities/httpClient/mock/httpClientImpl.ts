@@ -64,7 +64,7 @@ export class AxiosHttpClientImpl<T> implements IHttpClient<T> {
         if(userExists) {
           reject({
             httpStatusCode: HttpStatusCode.Unprocessable_Entity,
-            message: "Email is duplicated."
+            message: "Esse email já está cadastrado."
           } satisfies IHttpError);
         } else {
           resolve({
@@ -97,7 +97,7 @@ export class AxiosHttpClientImpl<T> implements IHttpClient<T> {
         else 
           reject({
             httpStatusCode: HttpStatusCode.Bad_Request,
-            message: "Email or password are wrong."
+            message: "Email ou senha incorreta."
           } satisfies IHttpError);
       }, 1000);
     });
