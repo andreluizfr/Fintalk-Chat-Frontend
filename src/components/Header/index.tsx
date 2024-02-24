@@ -22,12 +22,14 @@ export default function Header() {
 
   return (
     <header className='page-header' data-theme={themeStore.selectedTheme}>
-      <img 
-        className='logo-img'
-        loading='lazy'
-        decoding='async'
-        src={logo}
-      />
+      <a href="/">
+        <img 
+          className='logo-img'
+          loading='lazy'
+          decoding='async'
+          src={logo}
+        />
+      </a>
 
       <div className='buttons-bar-wrapper'>
 
