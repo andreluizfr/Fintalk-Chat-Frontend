@@ -116,7 +116,7 @@ export default function SignupPage(): JSX.Element {
 
         <StyledInput
           title={languageStore.labels.birthdate}
-          warning={languageStore.messages.enterValidPassword}
+          warning={languageStore.messages.enterValidBirthdate}
           theme={themeStore.selectedTheme}
           type="date"
           {...register("birthdate")}
