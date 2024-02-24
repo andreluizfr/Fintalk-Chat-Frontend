@@ -35,6 +35,8 @@ export default function Header() {
           <>
             <img
               className='user-icon'
+              loading='eager'
+              decoding='async'
               src="https://static.vecteezy.com/system/resources/previews/007/033/152/non_2x/users-people-icon-vector.jpg" 
               alt="message user icon"
             />
