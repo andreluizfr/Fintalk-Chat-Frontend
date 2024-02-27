@@ -29,6 +29,7 @@ export default function Header() {
         loading='lazy'
         decoding='async'
         src={logo}
+        alt='logo'
         onClick={()=>navigate("/")}
       />
 

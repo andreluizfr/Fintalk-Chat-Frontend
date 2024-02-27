@@ -20,7 +20,8 @@
       "enterValidBirthdate": "Informe uma data válida",
       "emailOrPasswordNullRequestError": "Erro: email e senha não foram identificados.",
       "tokenNotFoundRequestError": "Erro: Token de acesso não encontrado.",
-      "chatIdentifierNotFound": "Erro: Nenhum identificador de chat encontrado."
+      "chatIdentifierNotFound": "Erro: Nenhum identificador de chat encontrado.",
+      "signupFieldsNullRequestError": "Erro: nome, email, senha ou data de aniversário não foram identificados."
     },
     "en": {
       "requestError": "Error: The server couldn't handle the request.",
@@ -43,6 +44,7 @@
       "enterValidBirthdate": "Enter a valid date.",
       "emailOrPasswordNullRequestError": "Error: email or password were not identified.",
       "tokenNotFoundRequestError": "Erro: Access token not found.",
-      "chatIdentifierNotFound": "Erro: Chat identifier not found."
+      "chatIdentifierNotFound": "Erro: Chat identifier not found.",
+      "signupFieldsNullRequestError": "Error: name, email, password or birthdate were not identified."
     }
   }
