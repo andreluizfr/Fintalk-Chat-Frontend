@@ -8,9 +8,10 @@ import { userRegisteringSchema } from '@entities/UserRegistering';
 import { createUser } from "@store/redux/features/userSlice";
 
 import { Dispatch, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { AnyAction } from "@reduxjs/toolkit";
+import { StoreState } from '@store/redux/config';
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { ValidationError } from "yup";
 
@@ -20,10 +21,11 @@ export const CreateUserService = (
   password: string | null,
   birthDate: Date | null
 ) => {
+  const languageStore = useSelector((state: StoreState) => state.language);
 
   const queryResult = useQuery<IHttpResponse<User>, IHttpError>(
     ['createUser'],
-    async () => CreateUserHttpRequest(name, email, password, birthDate),
+    async () => CreateUserHttpRequest(name, email, password, birthDate, languageStore.messages),
     {
       staleTime: 0,
       cacheTime: 0
@@ -48,9 +50,10 @@ async function CreateUserHttpRequest(
   email: string | null,
   password: string | null,
   birthdate: Date | null,
+  messages: any
 ): Promise<IHttpResponse<User>> {
 
-  await validateFields(name, email, password, birthdate);
+  await validateFields(name, email, password, birthdate, messages);
 
   const httpClient = makeHttpClient<User>();
 
@@ -62,11 +65,11 @@ async function CreateUserHttpRequest(
   return httpResponse;
 }
 
-async function validateFields(name: string | null, email: string | null, password: string | null, birthdate: Date | null) {
+async function validateFields(name: string | null, email: string | null, password: string | null, birthdate: Date | null, messages: any) {
   if (!name || !email || !password || !birthdate)
     throw {
       httpStatusCode: null,
-      message: "Erro: nome, email, senha ou data de aniversário não foram identificados."
+      message: messages.signupFieldsNullRequestError
     } as IHttpError;
 
   try {

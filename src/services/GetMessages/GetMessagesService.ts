@@ -6,16 +6,18 @@ import { IHttpResponse } from "@entities/httpClient/IHttpResponse";
 import Message from "@entities/Message";
 
 import { Dispatch, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { AnyAction } from "@reduxjs/toolkit";
 import { addMessage } from '@store/redux/features/chatSlice';
+import { StoreState } from '@store/redux/config';
 
 export const GetMessagesService = (chatId: string | null, membersQuantity: number) => {
+  const languageStore = useSelector((state: StoreState) => state.language);
 
   const queryResult = useQuery<IHttpResponse<Message>, IHttpError>(
     ['getMessages'],
-    async () => GetMessagesHttpRequest(chatId, membersQuantity),
+    async () => GetMessagesHttpRequest(chatId, membersQuantity, languageStore.messages),
     {
       enabled: chatId === null ? false : true,
       staleTime: 0,
@@ -36,7 +38,7 @@ export const GetMessagesService = (chatId: string | null, membersQuantity: numbe
   return queryResult;
 }
 
-export async function GetMessagesHttpRequest(chatId: string | null, membersQuantity: number) {
+export async function GetMessagesHttpRequest(chatId: string | null, membersQuantity: number, messages: any) {
 
   const persistentStorage = makePersistentStorage();
   const accessToken = persistentStorage.get<string>("x-access-token");
@@ -44,13 +46,12 @@ export async function GetMessagesHttpRequest(chatId: string | null, membersQuant
   if (!accessToken)
     throw {
       httpStatusCode: null,
-      message: 'Erro: Token de acesso não encontrado.'
-    } as IHttpError;
-  
+      message: messages.tokenNotFoundRequestError
+    }
   if (!chatId)
     throw {
       httpStatusCode: null,
-      message: 'Erro: Nenhum chat encontrado.'
+      message: messages.chatIdentifierNotFound
     } as IHttpError;
 
   const httpClient = makeHttpClient<Message>();

@@ -17,7 +17,10 @@
       "signupSuccessful": "Registro realizado com sucesso, você será redirecionado em breve.",
       "enterValidName": "Informe um nome válido.",
       "loginSuccessful": "Login realizado com sucesso, você será redirecionado em breve.",
-      "enterValidBirthdate": "Informe uma data válida"
+      "enterValidBirthdate": "Informe uma data válida",
+      "emailOrPasswordNullRequestError": "Erro: email e senha não foram identificados.",
+      "tokenNotFoundRequestError": "Erro: Token de acesso não encontrado.",
+      "chatIdentifierNotFound": "Erro: Nenhum identificador de chat encontrado."
     },
     "en": {
       "requestError": "Error: The server couldn't handle the request.",
@@ -37,6 +40,9 @@
       "signupSuccessful": "Signup was successful, you will be redirect soon.",
       "enterValidName": "Enter a valid name.",
       "loginSuccessful": "Login was successful, you will be redirect soon.",
-      "enterValidBirthdate": "Enter a valid date."
+      "enterValidBirthdate": "Enter a valid date.",
+      "emailOrPasswordNullRequestError": "Error: email or password were not identified.",
+      "tokenNotFoundRequestError": "Erro: Access token not found.",
+      "chatIdentifierNotFound": "Erro: Chat identifier not found."
     }
   }

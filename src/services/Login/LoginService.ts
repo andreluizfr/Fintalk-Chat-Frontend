@@ -7,19 +7,22 @@ import { IHttpResponse } from "@entities/httpClient/IHttpResponse";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { StoreState } from '@store/redux/config';
 
 export const LoginService = (
   email: string | null,
   password: string | null
 ) => {
-
+  const languageStore = useSelector((state: StoreState) => state.language);
+  
   const queryResult = useQuery<IHttpResponse<string>, IHttpError>(
     ['login'],
-    async () => LoginHttpRequest(email, password)
+    async () => LoginHttpRequest(email, password, languageStore.messages)
   );
 
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     if (queryResult.isError && queryResult.error) HandleLoginQueryError(queryResult.error);
     else if (queryResult.data?.data) HandleLoginQuerySuccess(queryResult.data, navigate);
@@ -32,12 +35,13 @@ export const LoginService = (
 async function LoginHttpRequest(
   email: string | null,
   password: string | null,
+  messages: any
 ): Promise<IHttpResponse<string>> {
 
   if (!email || !password)
     throw {
       httpStatusCode: null,
-      message: "Erro: email e senha são obrigatórios."
+      message: messages.emailOrPasswordNullRequestError
     } as IHttpError;
 
   const httpClient = makeHttpClient<string>();
