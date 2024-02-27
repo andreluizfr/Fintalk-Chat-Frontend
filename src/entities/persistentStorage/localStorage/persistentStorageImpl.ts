@@ -5,7 +5,7 @@ export class LocalStorageImpl implements IPersistentStorage {
   get<T>(key: string): T | null {
 
     const value = localStorage.getItem(key);
-    console.log(key, value);
+    
     if (value != null)
       return JSON.parse(value) as T;
     else

@@ -6,8 +6,11 @@ import { HttpStatusCode } from '../HttpStatusCode';
 import User from '@entities/User';
 import Message from '@entities/Message';
 
-import { v4 as uuidv4 } from 'uuid';
 import { loremIpsumGenerator } from '@utils/loremIpsumGenerator';
+
+import { makePersistentStorage } from '@factories/makePersistentStorage';
+
+import { v4 as uuidv4 } from 'uuid';
 
 export class AxiosHttpClientImpl<T> implements IHttpClient<T> {
 
@@ -49,25 +52,53 @@ export class AxiosHttpClientImpl<T> implements IHttpClient<T> {
   }
 
   private mockCreateUser(user: User): Promise<IHttpResponse<T>> {
-    return new Promise<IHttpResponse<T>>(resolve => {
+
+    return new Promise<IHttpResponse<T>>((resolve, reject) => {
+
+      const persistentStorage = makePersistentStorage();
+
       setTimeout(() => {
-        resolve({
-          httpStatusCode: HttpStatusCode.Created,
-          message: "User created.",
-          data: user as T
-        } satisfies IHttpResponse<T>);
+        const allUsers = persistentStorage.get<User[]>("users");
+        const userExists = allUsers?.find(u => u.email === user.email);
+
+        if(userExists) {
+          reject({
+            httpStatusCode: HttpStatusCode.Unprocessable_Entity,
+            message: "Esse email já está cadastrado."
+          } satisfies IHttpError);
+        } else {
+          resolve({
+            httpStatusCode: HttpStatusCode.Created,
+            message: "User created.",
+            data: user as T
+          } satisfies IHttpResponse<T>);
+        }
       }, 1000);
     });
   }
 
   private mockLogin(body: object) {
-    return new Promise<IHttpResponse<T>>(resolve => {
+    return new Promise<IHttpResponse<T>>((resolve, reject) => {
+      const email = (body as any).email;
+      const password = (body as any).password;
+
+      const persistentStorage = makePersistentStorage();
+      const users = persistentStorage.get<User[]>("users");
+
+      const user = users?.find(user => user.email === email && user.password === password);
+
       setTimeout(() => {
-        resolve({
-          httpStatusCode: HttpStatusCode.Ok,
-          message: "Succesful login.",
-          data: ("mock-access-token;"+(body as any).email+";"+(body as any).password) as T
-        } satisfies IHttpResponse<T>);
+        if(user)
+          resolve({
+            httpStatusCode: HttpStatusCode.Ok,
+            message: "Succesful login.",
+            data: ("mock-access-token;"+email+";"+password) as T
+          } satisfies IHttpResponse<T>);
+        else 
+          reject({
+            httpStatusCode: HttpStatusCode.Bad_Request,
+            message: "Email ou senha incorreta."
+          } satisfies IHttpError);
       }, 1000);
     });
   }
@@ -80,17 +111,16 @@ export class AxiosHttpClientImpl<T> implements IHttpClient<T> {
 
         if(authorization){
           const token = (authorization as string).split("Bearer ")[1];
-          console.log("token received:", token);
           const email = token.split(";")[1];
-          const password = token.split(";")[2];
+
+          const persistentStorage = makePersistentStorage();
+          const users = persistentStorage.get<User[]>("users");
+          const user = users?.find(user=>user.email===email) ? users?.find(user=>user.email===email) : null;
+
           resolve({
             httpStatusCode: HttpStatusCode.Ok,
-            message: "Succesful login.",
-            data: {
-              username: "usuario-teste",
-              password: password,
-              email: email
-            } satisfies User as T
+            message: "Succesful user fetching.",
+            data: user as T
           } satisfies IHttpResponse<T>);
         }
         

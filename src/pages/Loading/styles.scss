@@ -2,9 +2,9 @@
 @import '../../assets/scss/mixins';
 
 .LoadingPage {
-  flex: 1;
   @include flex-column-center-center;
-  height: 100%;
+  height: 100vh;
+  min-height: 100svh;
   width: 100%;
 
   &[data-theme="light"]{

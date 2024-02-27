@@ -10,10 +10,18 @@
       "newHere": "Novo por aqui?",
       "signupNow": "Assine agora",
       "reCaptcha": "Esta página é protegida pelo Google reCAPTCHA para garantir que você não é um robô.",
-      "learMore": "Saiba mais.",
+      "learnMore": "Saiba mais.",
       "enterValidEmail": "Informe um email válido.",
-      "enterValidPassword": "A senha deve ter entre 4 e 60 caracteres.",
-      "emailOrPasswordNull": "Email ou senha não foram identificados."
+      "enterValidPassword": "Sua senha deve possuir pelo menos 1 número, 1 letra minúscula, 1 letra maiúscula, 1 caractere especial, 8 caracteres e 128 caracteres no máximo.",
+      "emailOrPasswordNull": "Email ou senha não foram identificados.",
+      "signupSuccessful": "Registro realizado com sucesso, você será redirecionado em breve.",
+      "enterValidName": "Informe um nome válido.",
+      "loginSuccessful": "Login realizado com sucesso, você será redirecionado em breve.",
+      "enterValidBirthdate": "Informe uma data válida",
+      "emailOrPasswordNullRequestError": "Erro: email e senha não foram identificados.",
+      "tokenNotFoundRequestError": "Erro: Token de acesso não encontrado.",
+      "chatIdentifierNotFound": "Erro: Nenhum identificador de chat encontrado.",
+      "signupFieldsNullRequestError": "Erro: nome, email, senha ou data de aniversário não foram identificados."
     },
     "en": {
       "requestError": "Error: The server couldn't handle the request.",
@@ -26,9 +34,17 @@
       "newHere": "New here?",
       "signupNow": "Sign up now",
       "reCaptcha": "This page is protected by Google reCAPTCHA to ensure you are not a robot.",
-      "learMore": "Learn more.",
+      "learnMore": "Learn more.",
       "enterValidEmail": "Enter a valid email.",
-      "enterValidPassword": "The password must have between 4 and 60 caracters.",
-      "emailOrPasswordNull": "Email or password were not identified."
+      "enterValidPassword": "Your password must have at least 1 number, 1 small letter, 1 capital letter, 1 character especial, 8 characters and 128 characters at most.",
+      "emailOrPasswordNull": "Email or password were not identified.",
+      "signupSuccessful": "Signup was successful, you will be redirect soon.",
+      "enterValidName": "Enter a valid name.",
+      "loginSuccessful": "Login was successful, you will be redirect soon.",
+      "enterValidBirthdate": "Enter a valid date.",
+      "emailOrPasswordNullRequestError": "Error: email or password were not identified.",
+      "tokenNotFoundRequestError": "Erro: Access token not found.",
+      "chatIdentifierNotFound": "Erro: Chat identifier not found.",
+      "signupFieldsNullRequestError": "Error: name, email, password or birthdate were not identified."
     }
   }

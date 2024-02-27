@@ -7,18 +7,19 @@ import User from "@entities/User";
 
 import { addUser, removeUser } from '@store/redux/features/userSlice';
 
-import { Dispatch, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { AnyAction } from "@reduxjs/toolkit";
-
+import { AnyAction, Dispatch } from "@reduxjs/toolkit";
+import { StoreState } from '@store/redux/config';
 
 export const FetchUserService = () => {
+  const languageStore = useSelector((state: StoreState) => state.language);
 
   const queryResult = useQuery<IHttpResponse<User>, IHttpError>(
     ['fetchUser'],
-    async () => FetchUserHttpRequest(),
+    async () => FetchUserHttpRequest(languageStore.messages),
     {
       enabled: true,
       staleTime: 5 * 1000,
@@ -39,7 +40,7 @@ export const FetchUserService = () => {
   return queryResult;
 }
 
-export async function FetchUserHttpRequest() {
+export async function FetchUserHttpRequest(messages: any) {
 
   const persistentStorage = makePersistentStorage();
   const accessToken = persistentStorage.get<string>("x-access-token");
@@ -47,7 +48,7 @@ export async function FetchUserHttpRequest() {
   if (!accessToken)
     throw {
       httpStatusCode: null,
-      message: 'Erro: Token de acesso não encontrado.'
+      message: messages.tokenNotFoundRequestError
     } as IHttpError;
 
   const httpClient = makeHttpClient<User>();

@@ -22,7 +22,10 @@
       "needHelp": "Precisa de ajuda?",
       "newMember": "Novo por aqui?",
       "email": "Email",
-      "password": "Senha"
+      "password": "Senha",
+      "members": "Membros",
+      "logout": "Sair",
+      "birthdate": "Data de nascimento"
     },
     "en": {
       "signup": "Sign-up",
@@ -44,6 +47,9 @@
       "show": "SHOW",
       "hide": "HIDE",
       "email": "Email",
-      "password": "Password"
+      "password": "Password",
+      "members": "Members",
+      "logout": "Logout",
+      "birthdate": "Birthdate"
     }
   }

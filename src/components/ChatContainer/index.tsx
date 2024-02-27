@@ -2,6 +2,7 @@ import './styles.scss';
 
 import { LuSticker } from "react-icons/lu";
 import { IoMdSend } from "react-icons/io";
+import { CiMenuKebab } from "react-icons/ci";
 
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,6 +24,7 @@ export default function ChatContainer({chatId}: props) {
   const dispatch = useDispatch();
 
   const themeStore = useSelector((state: StoreState) => state.theme);
+  const languageStore = useSelector((state: StoreState) => state.language);
 
   const userStore = useSelector((state: StoreState) => state.user);
   const user = userStore.loggedUser;
@@ -56,8 +58,6 @@ export default function ChatContainer({chatId}: props) {
   }
   
   function dispatchNewMessageFromTextarea() {
-    console.log(chat);
-    console.log(messages);
 
     if(expandingTextarea.current && user) {
 
@@ -113,16 +113,12 @@ export default function ChatContainer({chatId}: props) {
             </h1>
 
             <span className='members' data-theme={themeStore.selectedTheme}>
-              {membersQuantity} members
+              {membersQuantity + " " + languageStore.labels.members}
             </span>
           </div>
 
           <div className='chat-options'>
-            <img
-              className='options-icon'
-              src="https://cdn2.iconfinder.com/data/icons/communication-vector-for-business/2000/Icon_15-512.png" 
-              alt="more options icon"
-            />
+            <CiMenuKebab className='options-icon' data-theme={themeStore.selectedTheme}/>
           </div>
         </header>
 
@@ -130,10 +126,18 @@ export default function ChatContainer({chatId}: props) {
           {messages.map((message, index) => {
             if(message.sender === user?.email)
               return (
-                <article className='message' data-selfie-message key={index}>
-                  <p className='message-text' data-selfie-message>
-                    {message.message}
-                  </p>
+                <article className='message' key={index}>
+                  <div className='message-infos-wrapper' data-selfie-message>
+                    <div className='first-row'>
+                      <span className='time' data-theme={themeStore.selectedTheme}>
+                        {message.time}
+                      </span>
+                    </div>
+
+                    <p className='message-text' data-selfie-message>
+                      {message.message}
+                    </p>
+                  </div>
                 </article>
               );
             else  
@@ -141,7 +145,7 @@ export default function ChatContainer({chatId}: props) {
                 <article className='message' key={index}>
                   <img
                     className='user-icon'
-                    src="https://static.vecteezy.com/system/resources/previews/007/033/152/non_2x/users-people-icon-vector.jpg" 
+                    src="https://static.vecteezy.com/system/resources/previews/007/033/152/non_2x/users-people-icon-vector.jpg"
                     alt="message user icon"
                   />
 
@@ -162,21 +166,21 @@ export default function ChatContainer({chatId}: props) {
                 </article>
               );
           })}
-        </main>
 
-        <aside className='message-writing-bar'>
-          <LuSticker className='sticker-icon' data-theme={themeStore.selectedTheme}/>
-          <textarea 
-            className='expanding-textarea' 
-            placeholder='Write a message...' 
-            rows={1}
-            ref={expandingTextarea}
-            onChange={(e)=>adjustSize(e)}
-            onKeyDown={(e)=>dontSkipLine(e)}
-            onKeyUp={(e)=>checkEnterToSendMessage(e)}
-          />
-          <IoMdSend className='send-icon' onClick={()=>dispatchNewMessageFromTextarea()} data-theme={themeStore.selectedTheme}/>
-        </aside>
+          <aside className='message-writing-bar'>
+            <LuSticker className='sticker-icon' data-theme={themeStore.selectedTheme}/>
+            <textarea 
+              className='expanding-textarea' 
+              placeholder='Write a message...' 
+              rows={1}
+              ref={expandingTextarea}
+              onChange={(e)=>adjustSize(e)}
+              onKeyDown={(e)=>dontSkipLine(e)}
+              onKeyUp={(e)=>checkEnterToSendMessage(e)}
+            />
+            <IoMdSend className='send-icon' onClick={()=>dispatchNewMessageFromTextarea()} data-theme={themeStore.selectedTheme}/>
+          </aside>
+        </main>
       </article>
     )
 }

@@ -8,7 +8,6 @@ import { ReactQueryProvider } from '@providers/ReactQueryProvider.tsx';
 import { HelmetProvider } from '@providers/HelmetProvider.tsx';
 import { ToastifyProvider } from '@providers/ToastifyProvider.tsx';
 
-import Layout from '@components/Layout/index.tsx';
 import Router from './Router.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -17,9 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <ReactQueryProvider>
         <HelmetProvider>
           <ToastifyProvider>
-            <Layout>
-              <Router/>
-            </Layout>
+            <Router/>
           </ToastifyProvider>
         </HelmetProvider>
       </ReactQueryProvider>

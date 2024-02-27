@@ -1,0 +1,65 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.signup-page {
+  @include flex-column-center-center;
+  flex: 1;
+  width: 100%;
+
+  &[data-theme="light"] {
+    background-color: $color-white;
+  }
+  &[data-theme="dark"] {
+    background-color: $color-neutral-900;
+  }
+
+  @include mq-small {
+    padding: 4rem;
+  }
+
+  >.Signup-form {
+    width: 100%;
+    @include flex-column-start-start;
+    gap: 1rem;
+    padding: 4rem 2rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    @include mq-small {
+      width: 27rem;
+      border-radius: .4rem;
+    }
+
+    &[data-theme="light"] {
+      background-color: $color-neutral-300;
+    }
+    &[data-theme="dark"] {
+      background-color: $color-neutral-700;
+    }
+
+    &>.Title {
+      margin: 0 0 .5rem 0;
+      font-size: $font-size-xl;
+      color: $color-white;
+      font-weight: $font-weight-bold;
+    }
+
+    .Signup-button {
+      width: 100%;
+      height: 3rem;
+      border-radius: .25rem;
+      background-color: $color-pink;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+      color: $color-white;
+      font-size: $font-size-normal;
+      font-weight: $font-weight-bold;
+
+      cursor: pointer;
+
+      &:hover {
+        background-color: $color-light-pink;
+        transition: background-color 200ms;
+      }
+    }
+  }
+}

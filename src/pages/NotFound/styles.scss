@@ -1,2 +1,48 @@
 @import '../../assets/scss/variables';
 @import '../../assets/scss/mixins';
+
+.NotFoundPage {
+  @include flex-column-start-center;
+  width: 100%;
+  min-width: 240px;
+  flex: 1;
+  padding: 1.5rem;
+
+  @include mq-small {
+    padding: 1rem;
+  }
+
+  >.Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 30rem;
+    flex: 1;
+
+    >.Sad-face-icon {
+      width: 128px;
+      height: auto;
+      color: #ffffff;
+    }
+
+    >.Title {
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      color: #ffffff;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    >.Subtitle {
+      font-size: 18px;
+      font-weight: 200;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-align: center;
+    }
+  }
+
+}

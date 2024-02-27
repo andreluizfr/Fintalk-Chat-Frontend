@@ -28,7 +28,6 @@ export default function ChatsContainer({setChatId}: props) {
   const chatStore = useSelector((state: StoreState) => state.chat);
   const allChats = chatStore.chats;
   const chats = user ? allChats.filter(chat=>chat.members.find(member=>member.email===user.email)?true:false) : [];
-  console.log(user, chats);
 
   const newChatModal = useRef<HTMLDivElement | null>(null);
   const chatNameInput = useRef<HTMLInputElement | null>(null);
@@ -87,11 +86,11 @@ export default function ChatsContainer({setChatId}: props) {
         <main className='chats' data-theme={themeStore.selectedTheme}>
 
           {chats.map(chat=>{
-            console.log(chat);
+
             const lastMessage = chat.messages.length > 0 ? 
               chat.messages[chat.messages.length-1]
               : null;
-            console.log(lastMessage);
+  
             return (
               <article className='chat' key={chat.id} onClick={()=>setChatId(chat.id)}>
                 <img 
@@ -134,7 +133,7 @@ export default function ChatsContainer({setChatId}: props) {
           <div className='all-chats'>
 
             {allChats.length > 0 && allChats.map(chat=>
-              <div className='chat-wrapper'>
+              <div className='chat-wrapper' key={'allchats-'+chat.id}>
                 <p className='chat-name'>{chat.name}</p>
                 <RiChatForwardLine className='enter-chat-icon' />
               </div>

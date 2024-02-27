@@ -16,7 +16,6 @@ export const ToastifyProvider = ({ children }: ProviderProps) => {
         draggable={false}
         pauseOnHover={false}
         hideProgressBar
-        theme="dark"
       />
     </>
   );
