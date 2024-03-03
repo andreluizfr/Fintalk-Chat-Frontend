@@ -30,12 +30,18 @@
       border: 1px solid $color-neutral-300;
       color: $color-neutral-800;
       color-scheme: light;
+      &:-internal-autofill-selected {
+        background-color: $color-white !important;
+      }
     }
     &[data-theme="dark"] {
       background-color: $color-neutral-900;
       border: 1px solid rgba($color-neutral-900, 0.6);
       color: $color-slate-100;
       color-scheme: dark;
+      &:-internal-autofill-selected {
+        background-color: $color-neutral-900 !important;
+      }
     }
   }
 
