@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 
 .lighthouseci
+
+package-lock.json
