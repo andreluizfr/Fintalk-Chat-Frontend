@@ -93,7 +93,7 @@ export default function ChatContainer({chatId}: props) {
   if(chat === null)
     return (
       <article className='chat-container' data-theme={themeStore.selectedTheme}>
-        <p className='empty-chats-message' data-theme={themeStore.selectedTheme}>Nenhum chat selecionado. Selecione um dos seus chats para ser exibido aqui.</p>
+        <p className='empty-chats-message' data-theme={themeStore.selectedTheme}>{languageStore.messages.noChatSelected}</p>
       </article>
     )
   

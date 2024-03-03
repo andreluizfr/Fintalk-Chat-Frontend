@@ -21,7 +21,10 @@
       "emailOrPasswordNullRequestError": "Erro: email e senha não foram identificados.",
       "tokenNotFoundRequestError": "Erro: Token de acesso não encontrado.",
       "chatIdentifierNotFound": "Erro: Nenhum identificador de chat encontrado.",
-      "signupFieldsNullRequestError": "Erro: nome, email, senha ou data de aniversário não foram identificados."
+      "signupFieldsNullRequestError": "Erro: nome, email, senha ou data de aniversário não foram identificados.",
+      "emptyChats": "Você ainda não participa de nenhum grupo :(",
+      "allChatsEmpty": "Nenhum chat disponível",
+      "noChatSelected": "Nenhum chat selecionado. Selecione um dos seus chats para ser exibido aqui."
     },
     "en": {
       "requestError": "Error: The server couldn't handle the request.",
@@ -45,6 +48,9 @@
       "emailOrPasswordNullRequestError": "Error: email or password were not identified.",
       "tokenNotFoundRequestError": "Erro: Access token not found.",
       "chatIdentifierNotFound": "Erro: Chat identifier not found.",
-      "signupFieldsNullRequestError": "Error: name, email, password or birthdate were not identified."
+      "signupFieldsNullRequestError": "Error: name, email, password or birthdate were not identified.",
+      "emptyChats": "You aren't in a chat yet :(",
+      "allChatsEmpty": "No chat available",
+      "noChatSelected": "No chat selected. Select one of your chats to be displayed here."
     }
   }
