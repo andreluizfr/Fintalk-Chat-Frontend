@@ -2,7 +2,7 @@ import { addMethod, string, date, object, InferType } from 'yup';
 
 addMethod(string, 'password', function (message) {
   return this.test('password', message, function (value) {
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,128}$/;
+    const passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!$&@#])[a-zA-Z0-9!$&@#]{8,128}$/;
     /*
       /^
         (?=.*\d)                      // deve conter ao menos um dígito

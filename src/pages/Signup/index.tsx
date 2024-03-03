@@ -113,7 +113,7 @@ export default function SignupPage(): JSX.Element {
             type='password'
             {...register("password")}
             required
-            pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,128}$/"
+            pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!$&@#])[a-zA-Z0-9!$&@#]{8,128}$"
           />
 
           <StyledInput
