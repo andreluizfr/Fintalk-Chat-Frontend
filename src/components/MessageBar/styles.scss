@@ -1,0 +1,43 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.message-writing-bar {
+  position: absolute;
+  bottom: .5rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  @include flex-row-space-between-end;
+  gap: 1rem;
+  padding: .5rem;
+  width: 95%;
+  background-color: $color-white;
+  border-radius: .8rem;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 4px;
+
+  >.sticker-icon {
+    width: auto;
+    height: 1.8rem;
+    cursor: pointer;
+  }
+
+  >.expanding-textarea {
+    width: 100%;
+    height: auto;
+    resize: none;
+    padding: .2rem;
+    border-radius: .2rem;
+    align-self: center;
+
+    font-size: $font-size-small;
+    font-weight: $font-weight-normal;
+    letter-spacing: .6px;
+  }
+
+  >.send-icon {
+    width: auto;
+    height: 1.8rem;
+    cursor: pointer;
+  }
+}

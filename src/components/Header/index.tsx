@@ -41,8 +41,10 @@ export default function Header() {
               className='user-icon'
               loading='eager'
               decoding='async'
-              src="https://static.vecteezy.com/system/resources/previews/007/033/152/non_2x/users-people-icon-vector.jpg" 
+              src="https://cdn-icons-png.freepik.com/512/1144/1144760.png" 
               alt="message user icon"
+              data-default-img
+              data-theme={themeStore.selectedTheme}
             />
             <span className='loggout' data-theme={themeStore.selectedTheme} onClick={loggout}>
               {languageStore.labels.logout}
