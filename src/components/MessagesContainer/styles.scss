@@ -3,13 +3,13 @@
 
 .messages-container {
   flex: 1;
-  @include flex-column-start-start;
   min-height: 70vh;
-  min-height: 70svh;
   max-height: 70vh;
-  max-height: 70svh;
-  overflow-y: auto;
   padding: .5rem 1rem 3.3rem 1rem;
+  overflow: auto;
+
+  display: flex;
+  flex-direction: column-reverse;
   
   &[data-theme="light"] {
     background-color: $color-neutral-100;
@@ -18,7 +18,7 @@
     background-color: $color-neutral-950;
   }
 
-  > .message {
+  .message {
     @include flex-row-start-start;
     width: 100%;
     padding: .5rem;
@@ -35,7 +35,7 @@
       @include flex-column-start-start;
       width: 100%;
 
-      &[data-selfie-message] {
+      &[data-selfie-message="true"] {
         align-items: flex-end;
 
         .message-text {

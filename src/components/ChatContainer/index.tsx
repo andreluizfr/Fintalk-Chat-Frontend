@@ -21,13 +21,13 @@ export default function ChatContainer({chatId}: props) {
 
   const { chat, messages, membersQuantity } = useChat(chatId);
  
-  GetMessagesService(chatId, membersQuantity);
+  //GetMessagesService(chatId, membersQuantity);
   
   if(chat)
     return (
       <article className='chat-container'>
         <ChatHeader chatName={chat?.name} membersQuantity={membersQuantity} />
-        <MessagesContainer chatId={chatId} messages={messages} />
+        <MessagesContainer chatId={chatId} messages={[...messages].reverse()} />
       </article>
     );
   
