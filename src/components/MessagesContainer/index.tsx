@@ -155,6 +155,7 @@ export default function MessagesContainer({chatId, messages}: props) {
       className='messages-container'
       onScroll={onScroll}
       ref={messagesContainerRef}
+      data-theme={themeStore.selectedTheme}
     >
       {messagesList.map((_item, index)=><Message key={index} index={index}/>)}
       <MessageBar chatId={chatId} />
