@@ -9,6 +9,7 @@ import useChat from '@hooks/useChat';
 
 import { useSelector } from 'react-redux';
 import { StoreState } from '@store/redux/config';
+import { useMemo } from 'react';
 
 interface props {
   chatId: string | null
@@ -21,13 +22,15 @@ export default function ChatContainer({chatId}: props) {
 
   const { chat, messages, membersQuantity } = useChat(chatId);
  
-  //GetMessagesService(chatId, membersQuantity);
+  GetMessagesService(chatId, membersQuantity);
+
+  const allMessages = useMemo(()=>[...messages].reverse(), [messages]);
   
   if(chat)
     return (
       <article className='chat-container'>
         <ChatHeader chatName={chat?.name} membersQuantity={membersQuantity} />
-        <MessagesContainer chatId={chatId} messages={[...messages].reverse()} />
+        <MessagesContainer chatId={chatId} messages={allMessages} />
       </article>
     );
   

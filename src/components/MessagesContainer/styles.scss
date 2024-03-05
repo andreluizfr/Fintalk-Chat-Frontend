@@ -29,6 +29,10 @@
       height: 2rem;
       object-fit: cover;
       border-radius: 50%;
+
+      &[data-theme="dark"] {
+        filter: invert(1);
+      }
     }
 
     > .message-infos-wrapper {
@@ -88,6 +92,31 @@
       width: fit-content;
       text-align: left;
       word-break: break-word;
+    }
+  }
+
+  .down-arrow {
+    display: none;
+    position: absolute;
+    bottom: 4rem;
+    right: 1.2rem;
+    margin: auto;
+
+    width: 2rem;
+    height: auto;
+
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: $color-neutral-50;
+    color: $color-neutral-900;
+
+    cursor: pointer;
+
+    &[data-visible="true"] {
+      display: block;
+    }
+    &[data-theme="dark"] {
+      box-shadow: rgba($color-neutral-400, 0.24) 0px 3px 8px;
     }
   }
 }
