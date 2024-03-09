@@ -1,6 +1,7 @@
 import './styles.scss';
 
 import MessageBar from '@components/MessageBar';
+import MessageContainer from '@components/MessageContainer';
 
 import Message from '@entities/Message';
 
@@ -10,145 +11,106 @@ import { useSelector } from 'react-redux';
 import { StoreState } from '@store/redux/config';
 import { useEffect, useRef, useState } from 'react';
 
-interface messageProps {
-  index: number;
-}
 interface props {
   chatId: string | null;
-  messages: Message[];
+  messagesList: Message[];
 }
 
 const ITEMS_LIMIT = 20;
 
-export default function MessagesContainer({chatId, messages}: props) {
+export default function MessagesContainer({chatId, messagesList}: props) {
   
   const themeStore = useSelector((state: StoreState) => state.theme);
-  const userStore = useSelector((state: StoreState) => state.user);
-  const user = userStore.loggedUser;
 
-  const [messagesList, setMessagesList] = useState<Message[]>([]);
-
-  const [loading, setLoading] = useState(true);
-  const [hasMore, setHasMore] = useState(true);
+  const [messagesListInView, setMessagesListInView] = useState<Message[]>([]);
+  const [loadingMessages, setLoadingMessages] = useState(true);
+  const [hasMoreMessages, setHasMoreMessages] = useState(true);
   const [offset, setOffset] = useState(1);
   const [updateMessagesList, setUpdateMessagesList] = useState(true);
-
-  function onScroll(event: React.UIEvent<HTMLElement>) {
-
-    const { scrollTop, clientHeight, scrollHeight } = (event.target as HTMLElement);
-
-    if ((-scrollTop) + clientHeight >= scrollHeight - 20) {
-      fetchMoreMessages();
-    }
-
-    if((-scrollTop) === 0) {
-      resetMessages();
-    }
-  }
-
-  function lastIndex () {
-    return messages.length>offset*ITEMS_LIMIT ? offset*ITEMS_LIMIT : messages.length;
-  }
-
-  function fetchMoreMessages() {
-    if(hasMore && !loading) {
-      setOffset(prev=>prev+1);
-      setUpdateMessagesList(true);
-      setLoading(true);
-    }
-  }
-
-  useEffect(()=>{
-    
-    if(updateMessagesList) {
-
-      const lastMessageIndex = lastIndex();
-
-      setTimeout(()=> {
-        setMessagesList([...messagesList, ...messages.slice(messagesList.length, lastMessageIndex)]);
-        setUpdateMessagesList(false);
-        setLoading(false);
-      }, 500);
-
-      if(lastMessageIndex === messages.length)
-        setHasMore(false);
-    }
-
-  }, [offset, updateMessagesList]);
+  const [showDownArrow, setShowDownArrow] = useState(false);
 
   const messagesContainerRef = useRef<HTMLElement | null>(null);
-  const [showDownArrow, setShowDownArrow] = useState(false);
-  
-  useEffect(()=>{
 
-    console.log(messages);
-    if(messagesContainerRef.current){
-
-      let { scrollTop } = messagesContainerRef.current;
-
-      if ((-scrollTop) >= 50) {
-        setShowDownArrow(true);
-      } else {
-        resetMessages();
-      }
-    }
-  }, [messages]);
-
-  function DownArrowClick() { //zerar estado do container
-    resetMessages();
+  function lastIndex () {
+    return messagesList.length>offset*ITEMS_LIMIT ? offset*ITEMS_LIMIT : messagesList.length;
   }
 
-  function resetMessages() {
-    const lastMessageIndex = lastIndex();
-    setMessagesList([...messages.slice(0, lastMessageIndex)]);
-    setOffset(1);
+  function loadInitialMessages() {
+    if(!loadingMessages) {
+      setOffset(1);
+      setUpdateMessagesList(true);
+    }
+    resetScrollToBottom();
+  }
 
+  function loadOldMessages() {
+    if(hasMoreMessages && !loadingMessages) {
+      setOffset(prev=>prev+1);
+      setUpdateMessagesList(true);
+    }
+  }
+  
+  function resetScrollToBottom() {
     if(messagesContainerRef.current){
       messagesContainerRef.current.scrollTop = 0;
       setShowDownArrow(false);
     }
   }
   
-  const Message = ({index}: messageProps) => {
+  function onScroll(event: React.UIEvent<HTMLElement>) {
 
-    const selfieMessage = messagesList[index].sender === user?.email;
+    const { scrollTop, clientHeight, scrollHeight } = (event.target as HTMLElement);
 
-    return (
-      <article className='message' id={"message"+index}>
+    if ((-scrollTop) + clientHeight >= scrollHeight - 20) {
+      loadOldMessages();
+    }
+    else if((-scrollTop) === 0) {
+      loadInitialMessages();
+    }
+  }
 
-        {selfieMessage ?
-          <></>
-          :
-          <img
-            className='user-icon'
-            src="https://cdn-icons-png.freepik.com/512/1144/1144760.png"
-            alt="message user icon"
-            data-theme={themeStore.selectedTheme}
-          />
-        }
-  
-        <div className='message-infos-wrapper' data-selfie-message={selfieMessage}>
-          <div className='first-row'>
-            {selfieMessage ?
-              <></>
-              :
-              <span className='username' data-theme={themeStore.selectedTheme}>
-                {messagesList[index].sender}
-              </span>
-            }
-            <span className='time' data-theme={themeStore.selectedTheme}>
-              {messagesList[index].time}
-            </span>
-          </div>
-  
-          <p className='message-text'>
-            {messagesList[index].message}
-          </p>
-        </div>
+  function updateLoadedMessagesInView() {
 
-      </article>
-    );
-  }   
+    const lastListIndex = lastIndex();
+
+    if(offset===1){
+      setMessagesListInView([...messagesList.slice(0, lastListIndex)]);
+    } else {
+      setMessagesListInView(prevList => [...prevList, ...messagesList.slice(messagesListInView.length, lastListIndex)]);
+    }
+
+    if (lastListIndex === messagesList.length) 
+      setHasMoreMessages(false);
+  }
+
+  useEffect(()=>{
+    
+    if(updateMessagesList) {
+      setLoadingMessages(true);
+
+      setTimeout(() => {
+        updateLoadedMessagesInView();
+        setLoadingMessages(false);
+      }, 500);
+
+      setUpdateMessagesList(false);
+    }
+
+  }, [offset, updateMessagesList]);
+
+  useEffect(()=>{
+
+    if(messagesContainerRef.current){
+
+      let { scrollTop } = messagesContainerRef.current;
+
+      if ((-scrollTop) >= 50) {
+        setShowDownArrow(true); //if scrollbar is far from bottom, only shows a downArrow to user choose weather keep scrolling top or be coming back to the new messages
+      } else {
+        loadInitialMessages(); //if scrollbar is at the bottom, automatically resets the list states to the initial with a new updated messageList
+      }
+    }
+  }, [messagesList]);
 
   return (
     <main 
@@ -157,13 +119,15 @@ export default function MessagesContainer({chatId, messages}: props) {
       ref={messagesContainerRef}
       data-theme={themeStore.selectedTheme}
     >
-      {messagesList.map((_item, index)=><Message key={index} index={index}/>)}
+      {messagesListInView.map((item, index)=><MessageContainer key={index} message={item}/>)}
+
       <MessageBar chatId={chatId} />
+
       <RiArrowDropDownLine 
         className='down-arrow' 
         data-visible={showDownArrow}
         data-theme={themeStore.selectedTheme}
-        onClick={DownArrowClick}
+        onClick={loadInitialMessages}
       />
     </main>
   );

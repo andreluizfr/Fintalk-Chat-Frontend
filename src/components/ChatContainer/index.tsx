@@ -30,7 +30,7 @@ export default function ChatContainer({chatId}: props) {
     return (
       <article className='chat-container'>
         <ChatHeader chatName={chat?.name} membersQuantity={membersQuantity} />
-        <MessagesContainer chatId={chatId} messages={allMessages} />
+        <MessagesContainer chatId={chatId} messagesList={allMessages} />
       </article>
     );
   
