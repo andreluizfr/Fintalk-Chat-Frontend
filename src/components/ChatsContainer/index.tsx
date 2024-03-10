@@ -101,6 +101,7 @@ export default function ChatsContainer() {
                   className='chat-icon'
                   src={chat.icon} 
                   alt='chat icon'
+                  decoding='async'
                 />
 
                 <ul className='chat-infos-wrapper'>

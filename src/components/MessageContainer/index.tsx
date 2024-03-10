@@ -28,6 +28,8 @@ export default function MessageContainer({ message }: props) {
           src="https://cdn-icons-png.freepik.com/512/1144/1144760.png"
           alt="message user icon"
           data-theme={themeStore.selectedTheme}
+          loading='lazy'
+          decoding='async'
         />
       }
 

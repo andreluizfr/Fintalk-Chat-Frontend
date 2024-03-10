@@ -1,9 +1,8 @@
 import './styles.scss';
 import logoCropped from '@assets/img/logo-white-cropped.svg';
-
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { BsFillTelephoneInboundFill } from "react-icons/bs";
-import { IoIosHelpCircle } from "react-icons/io";
+import mapMarkerIcon from '@assets/img/mapMarker.svg';
+import telephoneInboundIcon from '@assets/img/telephoneInbound.svg';
+import helpCircleIcon from '@assets/img/helpCircle.svg';
 
 import { StoreState } from '@store/redux/config';
 import { useSelector } from 'react-redux';
@@ -22,10 +21,19 @@ export default function Footer() {
               className='logo'
               src={logoCropped}
               alt='logo'
+              width={6 * parseFloat(getComputedStyle(document.documentElement).fontSize)}
+              height='auto'
+              decoding='async'
             />
-            <p className='info'><FaMapMarkerAlt/>{languageStore.labels.footerAddress}</p>
+            <p className='info'>
+              <img src={mapMarkerIcon} alt='map marker icon' style={{filter: "invert(1)"}} width={16} height='auto'/>
+              {" "+languageStore.labels.footerAddress}
+            </p>
             <p className='info'>{languageStore.labels.footerCityStateCountry}</p>
-            <p className='info'><BsFillTelephoneInboundFill/>{languageStore.labels.footerPhoneNumber}</p>
+            <p className='info'>
+              <img src={telephoneInboundIcon} alt='telephone inbound icon' style={{filter: "invert(1)"}} width={12} height='auto'/>
+              {" "+languageStore.labels.footerPhoneNumber}
+            </p>
           </div>
         </section>
 
@@ -57,7 +65,10 @@ export default function Footer() {
         <section className='section-column'>
           <div className='section-wrapper'>
             <h1 className='section-title'>{languageStore.labels.help}</h1>
-            <p className='link'><IoIosHelpCircle/>{languageStore.labels.help}</p>
+            <p className='link'>
+              <img src={helpCircleIcon} alt='help circle icon' style={{filter: "invert(1)"}} width={16} height='auto'/>
+              {languageStore.labels.help}
+            </p>
           </div>
         </section>
       </div>

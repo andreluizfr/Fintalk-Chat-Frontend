@@ -3,7 +3,7 @@ import './styles.scss';
 import ThemeSwitcher from './ThemeSwitcher';
 import LanguageSelect from './LanguageSelect';
 
-import { FaGear } from "react-icons/fa6";
+import gearIcon from '@assets/img/gear.svg';
 
 import logo from '@assets/img/logo.png';
 
@@ -46,10 +46,12 @@ export default function Header() {
 
       <img 
         className='logo-img'
-        loading='lazy'
+        loading='eager'
         decoding='async'
         src={logo}
         alt='logo'
+        width={8 * parseFloat(getComputedStyle(document.documentElement).fontSize)}
+        height='auto'
         onClick={()=>navigate("/")}
       />
 
@@ -86,11 +88,21 @@ export default function Header() {
         
           <button
             id="configs-button"
-            aria-describedby={id} 
+            aria-describedby={id}
+            aria-label="configs"
             onClick={handleClick} 
             className='configs-button'
           >
-            <FaGear className='configs-icon' data-theme={themeStore.selectedTheme}/>
+            <img 
+              src={gearIcon} 
+              alt='gear icon'
+              loading='eager'
+              decoding='async'
+              width={1.3 * parseFloat(getComputedStyle(document.documentElement).fontSize)}
+              height='auto'
+              className='configs-icon' 
+              data-theme={themeStore.selectedTheme}
+            />
           </button>
 
         <ClickAwayListener onClickAway={()=>{
