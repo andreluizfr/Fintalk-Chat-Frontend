@@ -64,7 +64,7 @@ function HandleLoginQuerySuccess(data: IHttpResponse<string>, navigate: Navigate
     const persistentStorage = makePersistentStorage();
     persistentStorage.set("x-access-token", accessToken);
 
-    setTimeout(() => navigate("/chat", { replace: true }), 2000);
+    setTimeout(() => navigate("/chats", { replace: true }), 2000);
   }
 }
 

@@ -8,15 +8,17 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "lhci": "lhci autorun" 
+    "lhci": "lhci autorun"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.12",
+    "@radix-ui/themes": "^2.0.3",
     "@reduxjs/toolkit": "^1.9.5",
     "@tanstack/react-query": "^4.29.25",
     "framer-motion": "^10.12.16",
     "lorem-ipsum": "^2.0.8",
-    "node-sass": "^9.0.0",
-    "radix-ui": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.0.12",
@@ -25,6 +27,7 @@
     "react-icons": "^5.0.1",
     "react-loading-skeleton": "^3.4.0",
     "react-redux": "^8.1.3",
+    "react-responsive": "^9.0.2",
     "react-router-dom": "^6.22.0",
     "react-spinners": "^0.13.8",
     "react-toastify": "^10.0.4",

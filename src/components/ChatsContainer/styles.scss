@@ -4,9 +4,8 @@
 .chats-container {
   flex: 1 1;
   min-width: 12rem;
-  max-width: 20rem;
-  @include flex-column-start-center;
-  align-items: stretch;
+  @include flex-column-start-stretch;
+
   &[data-theme="light"] {
     border-right: 1px solid rgba($color-black, 0.24);
   }
@@ -72,7 +71,7 @@
 
         width: 1.5rem;
         height: auto;
-        color: $color-neutral-600;
+        color: $color-neutral-700;
 
         cursor: pointer;
       }
@@ -83,7 +82,6 @@
   > .chats {
     flex: 1;
     @include flex-column-start-center;
-    padding: 1rem;
     &[data-theme="light"] {
       color: $color-black;
     }
@@ -95,9 +93,22 @@
       @include flex-row-start-center;
       width: 100%;
       height: 4rem;
-      padding: .5rem;
+      padding: .5rem 1.5rem;
       gap: .5rem;
+      transition: background-color 200ms;
       cursor: pointer;
+      &[data-theme="light"] {
+        border-bottom: 1px solid rgba($color-black, 0.24);
+        &:hover {
+          background-color: rgba($color-black, 0.08);
+        }
+      }
+      &[data-theme="dark"] {
+        border-bottom: 1px solid rgba($color-white, 0.24);
+        &:hover {
+          background-color: rgba($color-white, 0.08);
+        }
+      }
 
       > .chat-icon {
         width: 2rem;
@@ -173,17 +184,25 @@
 
       @include flex-column-start-start;
       gap: 1rem;
-      width: 50vw;
+      width: 60vw;
+      min-width: 16rem;
       height: fit-content;
       padding: 1rem;
       background-color: $color-white;
       box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
       border-radius: .4rem;
+      &[data-theme="light"] {
+        background-color: $color-white;
+      }
+      &[data-theme="dark"] {
+        background-color: $color-neutral-700;
+      }
 
       > .create-chat-wrapper {
         @include flex-row-space-between-center;
         width: 100%;
         padding: .5rem;
+        gap: .5rem;
         &[data-theme="light"] {
           border-bottom: 1px solid rgba($color-black, 0.24);
         }
@@ -192,19 +211,33 @@
         }
 
         > .chat-name-input {
-          width: 80%;
+          width: 100%;
           padding: .6rem 2rem .6rem .8rem;
-          background-color: $color-neutral-100;
           border-radius: .4rem;
 
           font-size: $font-size-small;
           font-weight: $font-weight-normal;
+          
+          &[data-theme="light"] {
+            background-color: $color-neutral-100;
+            color: $color-neutral-900;
+          }
+          &[data-theme="dark"] {
+            background-color: $color-neutral-900;
+            color: $color-neutral-100;
+          }
         }
 
         > .create-chat-icon {
           width: 1.8rem;
           height: auto;
           cursor: pointer;
+          &[data-theme="light"] {
+            color: $color-neutral-900;
+          }
+          &[data-theme="dark"] {
+            color: $color-neutral-200;
+          }
         }
       }
 
@@ -220,13 +253,24 @@
             width: 100%;
             font-size: $font-size-small;
             font-weight: $font-weight-semi-bold;
-            color: $color-black;
+            &[data-theme="light"] {
+              color: $color-neutral-900;
+            }
+            &[data-theme="dark"] {
+              color: $color-neutral-200;
+            }
           }
 
           > .enter-chat-icon {
             width: 1.5rem;
             height: auto;
-            // cursor: pointer;
+            cursor: pointer;
+            &[data-theme="light"] {
+              color: $color-neutral-900;
+            }
+            &[data-theme="dark"] {
+              color: $color-neutral-200;
+            }
           }
         }
       }

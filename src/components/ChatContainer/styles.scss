@@ -2,217 +2,35 @@
 @import '../../assets/scss/mixins';
 
 .chat-container {
-  flex: 1 1;
+  flex: 3 1;
   min-width: 14rem;
   position: relative;
-  @include flex-column-start-center;
-  align-items: stretch;
+  @include flex-column-start-stretch;
+
   &[data-theme="light"] {
-    color: $color-black;
     background-color: $color-white;
   }
   &[data-theme="dark"] {
-    color: $color-white;
     background-color: $color-neutral-900;
   }
 
-  > .chat-container-header {
-    position: sticky;
-    top: 0;
-    @include flex-row-space-between-center;
-    gap: 1rem;
-    height: 5rem;
-    padding: 1rem;
+  > .empty-chats-message {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+    padding: .2rem;
+
+    font-size: $font-size-small;
+    font-weight: $font-weight-normal;
+    text-align: center;
+
     &[data-theme="light"] {
-      border-bottom: 1px solid rgba($color-black, 0.24);
+      color: $color-black;
     }
     &[data-theme="dark"] {
-      border-bottom: 1px solid rgba($color-white, 0.24);
-    }
-
-    > .chat-icon {
-      height: 3rem;
-      width: auto;
-      object-fit: cover;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    > .chat-infos {
-      flex: 1;
-      @include flex-column-center-start;
-
-      > .chat-name {
-        font-size: $font-size-medium;
-        font-weight: $font-weight-semi-bold;
-        color: $color-black;
-
-        &[data-theme="light"] {
-          color: $color-black;
-        }
-        &[data-theme="dark"] {
-          color: $color-white;
-        }
-      }
-
-      > .members {
-        font-size: $font-size-small;
-        font-weight: $font-weight-semi-bold;
-        &[data-theme="light"] {
-          color: $color-neutral-600;
-        }
-        &[data-theme="dark"] {
-          color: $color-neutral-500;
-        }
-      }
-
-    }
-
-    > .chat-options {
-
-      > .options-icon {
-        width: 1.6rem;
-        height: auto;
-        cursor: pointer;
-
-        &[data-theme="light"] {
-          fill: $color-black;
-        }
-        &[data-theme="dark"] {
-          fill: $color-white;
-        }
-      }
-    }
-  }
-
-  > .messages-container {
-    flex: 1;
-    @include flex-column-start-start;
-    min-height: 70vh;
-    min-height: 70svh;
-    max-height: 70vh;
-    max-height: 70svh;
-    overflow-y: scroll;
-    padding: .5rem 1rem;
-    &[data-theme="light"] {
-      background-color: $color-neutral-100;
-    }
-    &[data-theme="dark"] {
-      background-color: $color-neutral-950;
-    }
-
-    > .message {
-      @include flex-row-start-start;
-      width: 100%;
-      padding: .5rem;
-      gap: .5rem;
-
-      > .user-icon {
-        width: 2rem;
-        height: 2rem;
-        object-fit: cover;
-        border-radius: 50%;
-      }
-
-      > .message-infos-wrapper {
-        @include flex-column-start-start;
-        width: 100%;
-
-        &[data-selfie-message] {
-          align-items: flex-end;
-
-          .message-text {
-            background-color: $color-pink;
-            color: $color-white;
-            border-radius: .4rem;
-            border-top-right-radius: 0;
-  
-            text-align: right;
-          }
-        }
-
-        > .first-row {
-          
-          > .username {
-            font-size: $font-size-normal;
-            font-weight: $font-weight-semi-bold;
-            &[data-theme="light"] {
-              color: $color-neutral-900;
-            }
-            &[data-theme="dark"] {
-              color: $color-white;
-            }
-          }
-          > .time {
-            margin-left: 1rem;
-            font-size: $font-size-small;
-            font-weight: $font-weight-normal;
-            &[data-theme="light"] {
-              color: $color-neutral-650;
-            }
-            &[data-theme="dark"] {
-              color: $color-neutral-600;
-            }
-          }
-        }
-      }
-
-      .message-text {
-        padding: .6rem;
-        background-color: $color-neutral-50;
-        border-radius: .4rem;
-        border-top-left-radius: 0;
-        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-
-        color: $color-neutral-900;
-        font-size: $font-size-small;
-        font-weight: $font-weight-normal;
-        
-        width: fit-content;
-        text-align: left;
-        word-break: break-word;
-      }
-    }
-
-    > .message-writing-bar {
-      position: absolute;
-      bottom: .5rem;
-      left: 0;
-      right: 0;
-      margin: auto;
-
-      @include flex-row-space-between-end;
-      gap: 1rem;
-      padding: .5rem;
-      width: 95%;
-      background-color: $color-white;
-      border-radius: .8rem;
-      box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 4px;
-  
-      > .sticker-icon {
-        width: auto;
-        height: 1.8rem;
-        cursor: pointer;
-      }
-  
-      > .expanding-textarea {
-        width: 100%; 
-        height: auto;
-        resize: none;
-        padding: .2rem; 
-        border-radius: .2rem;
-        align-self: center;
-  
-        font-size: $font-size-small;
-        font-weight: $font-weight-normal;
-        letter-spacing: .6px;
-      }
-  
-      > .send-icon {
-        width: auto;
-        height: 1.8rem;
-        cursor: pointer;
-      }
+      color: $color-white;
     }
   }
 }

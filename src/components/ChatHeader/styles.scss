@@ -1,0 +1,105 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.chat-container-header {
+  position: sticky;
+  top: 0;
+  @include flex-row-space-between-center;
+  gap: 1rem;
+  height: 5rem;
+  padding: 1rem;
+  &[data-theme="light"] {
+    border-bottom: 1px solid rgba($color-black, 0.24);
+  }
+  &[data-theme="dark"] {
+    border-bottom: 1px solid rgba($color-white, 0.24);
+  }
+
+  > .rounded-icon{
+    border-radius: 50%;
+    padding: .25rem;
+    margin-right: .5rem;
+    cursor: pointer;
+
+    &:hover{
+        transition: background-color 300ms;
+        &[data-theme="light"] {
+          background-color: rgba($color-black, .08);
+        }
+        &[data-theme="dark"] {
+          background-color: rgba($color-white, .08);
+        }
+    }
+
+    > .back-icon{
+      width: 1.6rem;
+      height: auto;
+      padding: 0 .01rem;
+       
+      &[data-theme="light"] {
+        color: $color-black;
+      }
+      &[data-theme="dark"] {
+        color: $color-neutral-300;
+      }
+
+      &:hover{
+          transition: color 300ms;
+      }
+    }
+  }
+
+  > .chat-icon {
+    height: 3rem;
+    width: auto;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  > .chat-infos {
+    flex: 1;
+    @include flex-column-center-start;
+
+    > .chat-name {
+      font-size: $font-size-medium;
+      font-weight: $font-weight-semi-bold;
+      color: $color-black;
+
+      &[data-theme="light"] {
+        color: $color-black;
+      }
+      &[data-theme="dark"] {
+        color: $color-white;
+      }
+    }
+
+    > .members {
+      font-size: $font-size-small;
+      font-weight: $font-weight-semi-bold;
+      &[data-theme="light"] {
+        color: $color-neutral-600;
+      }
+      &[data-theme="dark"] {
+        color: $color-neutral-500;
+      }
+    }
+
+  }
+
+  > .chat-options {
+
+    > .options-icon {
+      width: 1.6rem;
+      height: auto;
+      cursor: pointer;
+
+      &[data-theme="light"] {
+        fill: $color-black;
+      }
+      &[data-theme="dark"] {
+        fill: $color-white;
+      }
+    }
+  }
+}

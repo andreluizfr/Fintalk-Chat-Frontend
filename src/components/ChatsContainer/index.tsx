@@ -2,25 +2,26 @@ import './styles.scss';
 
 import { CiSearch } from "react-icons/ci";
 import { RiChatForwardLine } from "react-icons/ri";
+import { IoAdd } from "react-icons/io5";
+import { RiChatNewFill } from "react-icons/ri";
 
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StoreState } from '@store/redux/config';
 import { createChat } from '@store/redux/features/chatSlice';
+import { useNavigate } from 'react-router-dom';
 
 import Chat from '@entities/Chat';
 
 import { v4 as uuidv4 } from 'uuid';
 
-interface props {
-  setChatId: React.Dispatch<React.SetStateAction<string | null>>
-}
-
-export default function ChatsContainer({setChatId}: props) {
+export default function ChatsContainer() {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const themeStore = useSelector((state: StoreState) => state.theme);
+  const languageStore = useSelector((state: StoreState) => state.language);
 
   const userStore = useSelector((state: StoreState) => state.user);
   const user = userStore.loggedUser;
@@ -66,10 +67,8 @@ export default function ChatsContainer({setChatId}: props) {
       <header className='chats-header' data-theme={themeStore.selectedTheme}>
         <div className='chats-header-toolbar'>
           <h1 className='title' data-theme={themeStore.selectedTheme}>Messages</h1>
-          <img 
+          <RiChatNewFill 
             className='creat-chat-icon'
-            src="https://cdn.icon-icons.com/icons2/3412/PNG/512/chat_add_icon_217458.png"
-            alt="enter or create chat"
             onClick={()=>showModal()}
             data-theme={themeStore.selectedTheme}
           />
@@ -92,7 +91,12 @@ export default function ChatsContainer({setChatId}: props) {
               : null;
   
             return (
-              <article className='chat' key={chat.id} onClick={()=>setChatId(chat.id)}>
+              <article 
+                className='chat' 
+                key={chat.id} 
+                data-theme={themeStore.selectedTheme}
+                onClick={()=>navigate('/chats?id='+chat.id)}
+              >
                 <img 
                   className='chat-icon'
                   src={chat.icon} 
@@ -114,35 +118,27 @@ export default function ChatsContainer({setChatId}: props) {
 
       {chats.length === 0 &&
         <main className='chats' data-theme={themeStore.selectedTheme}>
-          {"Você ainda não participa de nenhum grupo :("}
+          {languageStore.messages.emptyChats}
         </main>
       }
 
       <div className='new-chat-modal-background' ref={newChatModal} onClick={()=>hideModal()}>
-        <article className='new-chat-modal' onClick={(e)=>e.stopPropagation()}>
+        <article className='new-chat-modal' data-theme={themeStore.selectedTheme} onClick={(e)=>e.stopPropagation()}>
           <form className='create-chat-wrapper' data-theme={themeStore.selectedTheme}>
-            <input className='chat-name-input' placeholder='Enter the chat name' ref={chatNameInput}/>
-            <img 
-              className='create-chat-icon'
-              src="https://cdn.icon-icons.com/icons2/3412/PNG/512/chat_add_icon_217458.png"
-              alt="create chat"
-              onClick={createNewChat}
-            />
+            <input className='chat-name-input' data-theme={themeStore.selectedTheme} placeholder='Enter the chat name' ref={chatNameInput}/>
+            <IoAdd className='create-chat-icon' data-theme={themeStore.selectedTheme} onClick={createNewChat}/>
           </form>
 
           <div className='all-chats'>
-
             {allChats.length > 0 && allChats.map(chat=>
               <div className='chat-wrapper' key={'allchats-'+chat.id}>
-                <p className='chat-name'>{chat.name}</p>
-                <RiChatForwardLine className='enter-chat-icon' />
+                <p className='chat-name' data-theme={themeStore.selectedTheme}>{chat.name}</p>
+                <RiChatForwardLine className='enter-chat-icon' data-theme={themeStore.selectedTheme}/>
               </div>
             )} 
-          
             {
-              allChats.length == 0 && "Nenhum chat disponível"
+              allChats.length == 0 && languageStore.messages.allChatsEmpty
             } 
-
           </div>
         </article>
       </div>
