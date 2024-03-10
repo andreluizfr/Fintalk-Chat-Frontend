@@ -15,6 +15,40 @@
     border-bottom: 1px solid rgba($color-white, 0.24);
   }
 
+  > .rounded-icon{
+    border-radius: 50%;
+    padding: .25rem;
+    margin-right: .5rem;
+    cursor: pointer;
+
+    &:hover{
+        transition: background-color 300ms;
+        &[data-theme="light"] {
+          background-color: rgba($color-black, .08);
+        }
+        &[data-theme="dark"] {
+          background-color: rgba($color-white, .08);
+        }
+    }
+
+    > .back-icon{
+      width: 1.6rem;
+      height: auto;
+      padding: 0 .01rem;
+       
+      &[data-theme="light"] {
+        color: $color-black;
+      }
+      &[data-theme="dark"] {
+        color: $color-neutral-300;
+      }
+
+      &:hover{
+          transition: color 300ms;
+      }
+    }
+  }
+
   > .chat-icon {
     height: 3rem;
     width: auto;

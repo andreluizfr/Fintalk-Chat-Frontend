@@ -4,9 +4,8 @@
 .chats-container {
   flex: 1 1;
   min-width: 12rem;
-  max-width: 20rem;
-  @include flex-column-start-center;
-  align-items: stretch;
+  @include flex-column-start-stretch;
+
   &[data-theme="light"] {
     border-right: 1px solid rgba($color-black, 0.24);
   }

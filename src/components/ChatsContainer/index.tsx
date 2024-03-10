@@ -9,18 +9,16 @@ import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StoreState } from '@store/redux/config';
 import { createChat } from '@store/redux/features/chatSlice';
+import { useNavigate } from 'react-router-dom';
 
 import Chat from '@entities/Chat';
 
 import { v4 as uuidv4 } from 'uuid';
 
-interface props {
-  setChatId: React.Dispatch<React.SetStateAction<string | null>>
-}
-
-export default function ChatsContainer({setChatId}: props) {
+export default function ChatsContainer() {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const themeStore = useSelector((state: StoreState) => state.theme);
   const languageStore = useSelector((state: StoreState) => state.language);
@@ -97,7 +95,7 @@ export default function ChatsContainer({setChatId}: props) {
                 className='chat' 
                 key={chat.id} 
                 data-theme={themeStore.selectedTheme}
-                onClick={()=>setChatId(chat.id)}
+                onClick={()=>navigate('/chats?id='+chat.id)}
               >
                 <img 
                   className='chat-icon'

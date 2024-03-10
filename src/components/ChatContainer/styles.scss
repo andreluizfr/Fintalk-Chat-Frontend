@@ -2,11 +2,11 @@
 @import '../../assets/scss/mixins';
 
 .chat-container {
-  flex: 1 1;
+  flex: 3 1;
   min-width: 14rem;
   position: relative;
-  @include flex-column-start-center;
-  align-items: stretch;
+  @include flex-column-start-stretch;
+
   &[data-theme="light"] {
     background-color: $color-white;
   }

@@ -1,10 +1,9 @@
 @import '../../assets/scss/variables';
 @import '../../assets/scss/mixins';
 
-.chat-page {
+.chats-page {
   flex: 1;
-  @include flex-row-center-center;
-  align-items: stretch;
+  @include flex-row-center-stretch;
   width: 100%;
 
   &[data-theme="light"] {
