@@ -26,8 +26,9 @@
       "members": "Membros",
       "logout": "Sair",
       "birthdate": "Data de nascimento",
-      "portuguese": "português",
-      "english": "inglês"
+      "portuguese": "Português",
+      "english": "Inglês",
+      "theme": "Tema"
     },
     "en": {
       "signup": "Sign-up",
@@ -53,7 +54,8 @@
       "members": "Members",
       "logout": "Logout",
       "birthdate": "Birthdate",
-      "portuguese": "portuguese",
-      "english": "english"
+      "portuguese": "Portuguese",
+      "english": "English",
+      "theme": "Theme"
     }
   }

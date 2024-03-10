@@ -20,7 +20,7 @@ export default function LanguageSelect() {
   };
 
   return (
-    <FormControl sx={{ m: 1 }} >
+    <FormControl>
       <Select
         value={languageStore.selectedLanguage}
         onChange={handleChange}
@@ -37,14 +37,14 @@ export default function LanguageSelect() {
             color: themeStore.light ? "#000" : "#fff"
           },
           '& .MuiOutlinedInput-notchedOutline': {
-            border: "1px solid #151515",
+            border: "2px solid #15151524",
             transition: "all 200ms"
           },
           '&:hover .MuiOutlinedInput-notchedOutline': {
-            border: "1px solid #ff7b9c"
+            border: "2px solid #ff7b9c"
           },
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-            border: "1px solid #ff3971"
+            border: "2px solid #ff3971"
           },
         }}
         MenuProps={{
@@ -56,6 +56,14 @@ export default function LanguageSelect() {
             },
             "& .Mui-selected:hover": {
               backgroundColor: "#ff3971 !important"
+            },
+            "& .MuiList-root": {
+              paddingTop: "0 !important",
+              paddingBottom: "0 !important"
+            },
+            "& .MuiMenuItem-root": {
+              height: "2rem",
+              minHeight: "0"
             }
           }
         }}
