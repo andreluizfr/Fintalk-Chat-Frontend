@@ -1,11 +1,15 @@
 import './styles.scss';
+
 import ThemeSwitcher from './ThemeSwitcher';
+import LanguageSelect from './LanguageSelect';
+
 import logo from '@assets/img/logo.png';
 
 import { StoreState } from '@store/redux/config';
 import { removeUser } from '@store/redux/features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 
 export default function Header() {
 
@@ -24,6 +28,7 @@ export default function Header() {
 
   return (
     <header className='page-header' data-theme={themeStore.selectedTheme}>
+
       <img 
         className='logo-img'
         loading='lazy'
@@ -65,6 +70,8 @@ export default function Header() {
         }
 
         <ThemeSwitcher />
+
+        <LanguageSelect />
         
       </div>
     </header>

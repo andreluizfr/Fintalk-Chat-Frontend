@@ -25,7 +25,9 @@
       "password": "Senha",
       "members": "Membros",
       "logout": "Sair",
-      "birthdate": "Data de nascimento"
+      "birthdate": "Data de nascimento",
+      "portuguese": "português",
+      "english": "inglês"
     },
     "en": {
       "signup": "Sign-up",
@@ -50,6 +52,8 @@
       "password": "Password",
       "members": "Members",
       "logout": "Logout",
-      "birthdate": "Birthdate"
+      "birthdate": "Birthdate",
+      "portuguese": "portuguese",
+      "english": "english"
     }
   }
