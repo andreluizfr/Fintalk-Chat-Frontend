@@ -14,13 +14,6 @@
     background-color: $color-neutral-800;
   }
 
-  @include mq-medium {
-    padding: 3rem 6rem;
-  }
-  @include mq-extra-large {
-    padding: 5rem 10rem;
-  }
-
   .footer-container {
     @include flex-row-start-start;
     flex-wrap: wrap;

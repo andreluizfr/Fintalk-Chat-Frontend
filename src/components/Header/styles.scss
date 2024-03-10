@@ -96,11 +96,8 @@
         width: 1.3rem;
         height: auto;
 
-        &[data-theme="light"] {
-          color: $color-black;
-        }
         &[data-theme="dark"] {
-          color: $color-white;
+          filter: invert(1);
         }
       }
     }

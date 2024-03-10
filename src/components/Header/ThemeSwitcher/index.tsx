@@ -1,7 +1,7 @@
 import './styles.scss';
 
-import { FiMoon } from "react-icons/fi";
-import { FiSun } from "react-icons/fi";
+import moonIcon from '@assets/img/moon.svg';
+import sunIcon from '@assets/img/sun.svg';
 
 import { StoreState } from '@store/redux/config';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,7 +21,15 @@ export default function ThemeSwitcher() {
         data-theme={themeStore.selectedTheme}
         onClick={()=>dispatch(selectTheme("dark"))} 
       >
-        <FiSun className='theme-icon' data-theme={themeStore.selectedTheme}/>
+        <img 
+          className='theme-icon'
+          src={sunIcon}
+          loading='lazy'
+          decoding='async'
+          data-theme={themeStore.selectedTheme}
+          width={2 * parseFloat(getComputedStyle(document.documentElement).fontSize)}
+          height='auto'
+        />
         <label>{languageStore.labels.theme}</label>
       </div>
     );
@@ -32,7 +40,15 @@ export default function ThemeSwitcher() {
       data-theme={themeStore.selectedTheme}
       onClick={()=>dispatch(selectTheme("light"))} 
     >
-      <FiMoon className='theme-icon' data-theme={themeStore.selectedTheme}/>
+      <img 
+        className='theme-icon' 
+        src={moonIcon} 
+        loading='lazy'
+        decoding='async'
+        data-theme={themeStore.selectedTheme}
+        width={2 * parseFloat(getComputedStyle(document.documentElement).fontSize)}
+        height='auto'
+      />
       <label data-theme={themeStore.selectedTheme}>{languageStore.labels.theme}</label>
     </div>
   );

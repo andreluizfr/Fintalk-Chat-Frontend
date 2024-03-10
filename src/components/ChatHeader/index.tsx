@@ -37,6 +37,7 @@ export default function ChatHeader({chatName, membersQuantity}: props) {
         className='chat-icon'
         src="https://static.vecteezy.com/ti/vetor-gratis/p3/3769720-group-chat-linear-icon-thin-line-illustration-chat-box-com-grupo-de-pessoas-dentro-do-contorno-simbolo-isolado-esboco-desenho-vetor.jpg"
         alt="chat icon"
+        decoding='async'
       />
 
       <div className='chat-infos'>

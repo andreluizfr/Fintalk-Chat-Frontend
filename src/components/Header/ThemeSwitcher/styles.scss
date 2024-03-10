@@ -9,15 +9,11 @@
   cursor: pointer;
 
   &[data-theme="light"] {
-    color: $color-black;
-
     &:hover {
       background-color: $color-slate-200;
     }
   }
   &[data-theme="dark"] {
-    color: $color-white;
-
     &:hover {
       background-color: $color-slate-300;
     }
@@ -27,6 +23,10 @@
     width: 2rem;
     height: auto;
     padding: .2rem;
+    
+    &[data-theme="dark"] {
+      filter: invert(1);
+    }
   }
 
   label {
