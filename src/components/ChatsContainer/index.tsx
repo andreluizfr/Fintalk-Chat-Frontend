@@ -93,7 +93,12 @@ export default function ChatsContainer({setChatId}: props) {
               : null;
   
             return (
-              <article className='chat' key={chat.id} onClick={()=>setChatId(chat.id)}>
+              <article 
+                className='chat' 
+                key={chat.id} 
+                data-theme={themeStore.selectedTheme}
+                onClick={()=>setChatId(chat.id)}
+              >
                 <img 
                   className='chat-icon'
                   src={chat.icon} 
