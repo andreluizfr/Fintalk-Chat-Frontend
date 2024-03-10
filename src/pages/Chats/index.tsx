@@ -26,7 +26,7 @@ export default function ChatPage() {
   });
 
   return (
-    <Layout>
+    <Layout hideFooter={isSmallScreen}>
       <main className='chats-page' data-theme={themeStore.selectedTheme}>
         {(!isSmallScreen || (isSmallScreen && !chatId)) && //mostrar se for tela grande ou tela pequena sem chat selecionado
           <ChatsContainer />
