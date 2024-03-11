@@ -31,6 +31,11 @@ export default function Header() {
     navigate("/");
   }
 
+  function goToChats(e: React.MouseEvent<HTMLAnchorElement>) {
+    e.preventDefault();
+    navigate("/chats");
+  }
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const open = Boolean(anchorEl);
@@ -54,6 +59,10 @@ export default function Header() {
         height='auto'
         onClick={()=>navigate("/")}
       />
+
+      {user &&
+        <a className='chats-link' onClick={goToChats} data-theme={themeStore.selectedTheme}>{languageStore.labels.chats}</a>
+      }
 
       <div className='buttons-bar-wrapper'>
 

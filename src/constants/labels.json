@@ -28,7 +28,8 @@
       "birthdate": "Data de nascimento",
       "portuguese": "Português",
       "english": "Inglês",
-      "theme": "Tema"
+      "theme": "Tema",
+      "chats": "Chats"
     },
     "en": {
       "signup": "Sign-up",
@@ -56,6 +57,7 @@
       "birthdate": "Birthdate",
       "portuguese": "Portuguese",
       "english": "English",
-      "theme": "Theme"
+      "theme": "Theme",
+      "chats": "Chats"
     }
   }
