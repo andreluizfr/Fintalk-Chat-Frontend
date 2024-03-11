@@ -82,7 +82,7 @@ export default function ChatsContainer() {
       </header>
       
       {chats.length > 0 &&
-        <main className='chats' data-theme={themeStore.selectedTheme}>
+        <main className='chats'>
 
           {chats.map(chat=>{
 
@@ -118,8 +118,8 @@ export default function ChatsContainer() {
       }
 
       {chats.length === 0 &&
-        <main className='chats' data-theme={themeStore.selectedTheme}>
-          {languageStore.messages.emptyChats}
+        <main className='chats'>
+          <p className='empty-chats' data-theme={themeStore.selectedTheme}>{languageStore.messages.emptyChats}</p>
         </main>
       }
 

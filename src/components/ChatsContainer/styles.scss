@@ -82,11 +82,20 @@
   > .chats {
     flex: 1;
     @include flex-column-start-center;
-    &[data-theme="light"] {
-      color: $color-black;
-    }
-    &[data-theme="dark"] {
-      color: $color-white;
+
+    > .empty-chats {
+      margin-top: .5rem;
+      padding: .5rem;
+      font-size: $font-size-small;
+      font-weight: $font-weight-normal;
+      text-align: center;
+
+      &[data-theme="light"] {
+        color: $color-black;
+      }
+      &[data-theme="dark"] {
+        color: $color-white;
+      }
     }
 
     > .chat {
