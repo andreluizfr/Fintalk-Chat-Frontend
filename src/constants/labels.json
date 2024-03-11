@@ -29,7 +29,8 @@
       "portuguese": "Português",
       "english": "Inglês",
       "theme": "Tema",
-      "chats": "Chats"
+      "chats": "Chats",
+      "editProfile": "Editar perfil"
     },
     "en": {
       "signup": "Sign-up",
@@ -58,6 +59,7 @@
       "portuguese": "Portuguese",
       "english": "English",
       "theme": "Theme",
-      "chats": "Chats"
+      "chats": "Chats",
+      "editProfile": "Edit profile"
     }
   }

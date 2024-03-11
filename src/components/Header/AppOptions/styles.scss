@@ -1,0 +1,17 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+
+.configs-button {
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+
+  >.configs-icon {
+    width: 1.3rem;
+    height: auto;
+
+    &[data-theme="dark"] {
+      filter: invert(1);
+    }
+  }
+}

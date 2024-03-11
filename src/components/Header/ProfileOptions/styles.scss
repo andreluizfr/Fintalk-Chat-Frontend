@@ -1,0 +1,74 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+
+.profile-options {
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+
+  > .user-icon {
+    border-radius: 50%;
+    width: 2.4rem;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+      transition: opacity 200ms;
+    }
+
+    &[data-default-img="true"][data-theme="dark"] {
+      filter: invert(1);
+    }
+  }
+}
+
+.edit-profile {
+  font-size: $font-size-normal;
+  font-weight: $font-weight-semi-bold;
+  cursor: pointer;
+
+  &:hover {
+    transition: all 300ms;
+    text-decoration: underline;
+  }
+  &[data-theme="light"] {
+    color: $color-black;
+  }
+  &[data-theme="dark"] {
+    color: $color-white;
+  }
+
+  .edit-profile-icon {
+    width: 1.2rem;
+    height: auto;
+    vertical-align: bottom;
+    margin-left: 0.5rem;
+  }
+}
+
+.loggout {
+  font-size: $font-size-normal;
+  font-weight: $font-weight-semi-bold;
+  cursor: pointer;
+
+  &:hover {
+    transition: all 300ms;
+    text-decoration: underline;
+  }
+  &[data-theme="light"] {
+    color: $color-black;
+  }
+  &[data-theme="dark"] {
+    color: $color-white;
+  }
+
+  > .loggout-icon {
+    width: 1.2rem;
+    height: auto;
+    vertical-align: bottom;
+    margin-left: 0.5rem;
+  }
+}
