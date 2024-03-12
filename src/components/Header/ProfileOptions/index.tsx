@@ -1,10 +1,11 @@
 import './styles.scss';
 
+import EditProfileModal from './EditProfileModal';
+
 import { BiDoorOpen } from "react-icons/bi";
 import { FaUserEdit } from "react-icons/fa";
 
-import Popper from '@mui/material/Popper';
-import ClickAwayListener from '@mui/material/ClickAwayListener';
+import { Popover } from '@mui/material';
 
 import { StoreState } from '@store/redux/config';
 import { removeUser } from '@store/redux/features/userSlice';
@@ -23,17 +24,24 @@ export default function ProfileOptions() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const open = Boolean(anchorEl);
-  const id = open ? 'simple-popper' : undefined;
+  const id = open ? 'simple-popover' : undefined;
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
-    setAnchorEl(anchorEl ? null : event.currentTarget);
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
   
   function loggout() {
     dispatch(removeUser());
     navigate("/");
   }
+
+  const [profileModalOpen, setProfileModalOpen] = useState(false);
 
   return (
     <>
@@ -55,17 +63,18 @@ export default function ProfileOptions() {
         />
       </button>
 
-      <ClickAwayListener onClickAway={()=>{
-        const el = document.getElementById("profile-options");
-        el?.click();
-      }}>
-        <Popper 
-          id={id} 
-          open={open} 
-          anchorEl={anchorEl}
-          placement='bottom-end'
-          sx={{ 
-            zIndex: 99999,
+      <Popover
+        id={id} 
+        open={open}
+        onClose={handleClose}
+        anchorEl={anchorEl}          
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        sx={{ 
+          zIndex: 99999,
+          '& .MuiPaper-root': {
             backgroundColor: themeStore.light ? "#fafafa" : "#545454",
             padding: ".5rem",
             display: "flex",
@@ -75,19 +84,20 @@ export default function ProfileOptions() {
             boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
             margin: ".2rem !important",
             width: "10rem"
-          }}
-        >
-          <span className='edit-profile' data-theme={themeStore.selectedTheme}>
-            {languageStore.labels.editProfile}
-            <FaUserEdit className='edit-profile-icon'/>
-          </span>
+          }
+        }}
+      >
+        <span className='field' data-theme={themeStore.selectedTheme} onClick={()=>setProfileModalOpen(true)}>
+          <FaUserEdit className='icon'/>
+          {languageStore.labels.editProfile}
+          <EditProfileModal open={profileModalOpen} setOpen={setProfileModalOpen}/>
+        </span>
 
-          <span className='loggout' data-theme={themeStore.selectedTheme} onClick={loggout}>
-            {languageStore.labels.logout}
-            <BiDoorOpen className='loggout-icon'/>
-          </span>
-        </Popper>
-      </ClickAwayListener>
+        <span className='field' data-theme={themeStore.selectedTheme} onClick={loggout}>
+          <BiDoorOpen className='icon'/>
+          {languageStore.labels.logout}
+        </span>
+      </Popover>
     </>
   ); 
 }

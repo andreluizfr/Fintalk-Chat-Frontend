@@ -25,7 +25,8 @@
   }
 }
 
-.edit-profile {
+.field {
+  padding: .2rem;
   font-size: $font-size-normal;
   font-weight: $font-weight-semi-bold;
   cursor: pointer;
@@ -41,34 +42,10 @@
     color: $color-white;
   }
 
-  .edit-profile-icon {
-    width: 1.2rem;
-    height: auto;
+  .icon {
+    height: 1.4rem;
+    width: auto;
     vertical-align: bottom;
-    margin-left: 0.5rem;
-  }
-}
-
-.loggout {
-  font-size: $font-size-normal;
-  font-weight: $font-weight-semi-bold;
-  cursor: pointer;
-
-  &:hover {
-    transition: all 300ms;
-    text-decoration: underline;
-  }
-  &[data-theme="light"] {
-    color: $color-black;
-  }
-  &[data-theme="dark"] {
-    color: $color-white;
-  }
-
-  > .loggout-icon {
-    width: 1.2rem;
-    height: auto;
-    vertical-align: bottom;
-    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
 }
